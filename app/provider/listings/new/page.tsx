@@ -83,7 +83,7 @@ export default function NewListingPage() {
 
                 <div className="space-y-1.5">
                   <Label>Category</Label>
-                  <Select onValueChange={setCategory} required>
+                  <Select onValueChange={(value) => value && setCategory(value)} required>
                     <SelectTrigger>
                       <SelectValue placeholder="Select a category" />
                     </SelectTrigger>
