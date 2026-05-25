@@ -5,7 +5,7 @@ import ReactMarkdown from 'react-markdown'
 import { Button } from '@/components/ui/button'
 import { Textarea } from '@/components/ui/textarea'
 import { Badge } from '@/components/ui/badge'
-import { Send, Bot, User, Loader2, Share2, Check } from 'lucide-react'
+import { Send, Bot, User, Loader2, Share2, Check, Compass } from 'lucide-react'
 import { cn } from '@/lib/utils'
 
 interface Message {
@@ -148,13 +148,13 @@ export default function ScoutPage({
                     </div>
                     <span className="text-sm font-medium text-navy">{item.q}</span>
                   </div>
-                  <div className="flex gap-2.5 px-4 py-3">
-                    <div className="w-5 h-5 rounded-full bg-navy flex items-center justify-center shrink-0 mt-0.5">
-                      <Bot className="w-2.5 h-2.5 text-sand" />
+                  <div className="flex gap-2.5 px-4 py-3 border-l-2 border-l-sand ml-0">
+                    <div className="w-6 h-6 rounded-full bg-navy flex items-center justify-center shrink-0 mt-0.5">
+                      <Compass className="w-3 h-3 text-sand" />
                     </div>
-                    <p className="text-sm text-foreground leading-relaxed">
+                    <p className="text-base text-[#555] leading-relaxed">
                       {item.a.split(/\*\*(.+?)\*\*/).map((part, i) =>
-                        i % 2 === 1 ? <strong key={i} className="font-semibold">{part}</strong> : part
+                        i % 2 === 1 ? <strong key={i} className="font-semibold text-navy">{part}</strong> : part
                       )}
                     </p>
                   </div>
