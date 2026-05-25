@@ -23,7 +23,7 @@ const CATEGORIES = [
 export default function NewListingPage() {
   const [submitted, setSubmitted] = useState(false)
   const [loading, setLoading] = useState(false)
-  const [category, setCategory] = useState('')
+  const [category, setCategory] = useState<string | null>(null)
 
   function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault()
@@ -83,7 +83,7 @@ export default function NewListingPage() {
 
                 <div className="space-y-1.5">
                   <Label>Category</Label>
-                  <Select onValueChange={(value) => value && setCategory(value)} required>
+                  <Select onValueChange={setCategory} required>
                     <SelectTrigger>
                       <SelectValue placeholder="Select a category" />
                     </SelectTrigger>
