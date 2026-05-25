@@ -3,7 +3,7 @@ import { notFound } from 'next/navigation'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
-import { ShoppingBag, Shield, Zap, MapPin, CheckCircle2 } from 'lucide-react'
+import { ShoppingBag, Shield, Zap, MapPin, CheckCircle2, ArrowRight } from 'lucide-react'
 import { PLATFORM_FEE_RATE, UPSELL_PRICES } from '@/types/database'
 import type { GearListing } from '@/types/database'
 import Link from 'next/link'
@@ -12,7 +12,7 @@ import Link from 'next/link'
 
 const PACKAGES = [
   {
-    id: 'family-sideline-kit',
+    id: 'family',
     name: 'Family Sideline Kit',
     price: 85,
     badge: 'Most Popular',
@@ -21,7 +21,7 @@ const PACKAGES = [
     description: 'Everything a family needs for a comfortable tournament day. Set up and tear down handled by us.',
   },
   {
-    id: 'team-basecamp',
+    id: 'basecamp',
     name: 'Team Basecamp',
     price: 350,
     badge: 'Best for Teams',
@@ -30,7 +30,7 @@ const PACKAGES = [
     description: 'A full sideline command center for your team. We handle logistics so coaches can focus on the game.',
   },
   {
-    id: 'premium-team-suite',
+    id: 'premium',
     name: 'Premium Team Suite',
     price: 750,
     badge: 'Premium',
@@ -100,6 +100,29 @@ export default async function GearPage({ params }: { params: Promise<{ slug: str
         </div>
       </div>
 
+      {/* ── How it works strip ── */}
+      <div className="bg-sand/15 border border-sand/40 rounded-xl p-5 mb-8">
+        <p className="text-xs font-semibold text-muted-foreground uppercase tracking-widest mb-4 text-center">How it works</p>
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 text-center">
+          {[
+            { step: '1', label: 'Choose your package', detail: 'Pick the setup that fits your family or team' },
+            { step: '2', label: 'We set it up at your field', detail: 'Gear is ready before you arrive' },
+            { step: '3', label: 'Enjoy the game', detail: 'We handle pickup when the tournament ends' },
+          ].map((s, i) => (
+            <div key={s.step} className="flex flex-col items-center gap-1.5 relative">
+              <div className="w-8 h-8 rounded-full bg-navy text-cream font-bold text-sm flex items-center justify-center shrink-0">
+                {s.step}
+              </div>
+              <p className="font-semibold text-navy text-sm">{s.label}</p>
+              <p className="text-xs text-muted-foreground">{s.detail}</p>
+              {i < 2 && (
+                <ArrowRight className="hidden sm:block absolute -right-2 top-2 w-4 h-4 text-sand" />
+              )}
+            </div>
+          ))}
+        </div>
+      </div>
+
       {/* ── Managed packages ── */}
       <div className="mb-10">
         <div className="flex items-center gap-3 mb-4">
@@ -136,13 +159,16 @@ export default async function GearPage({ params }: { params: Promise<{ slug: str
                   </p>
                   <Button
                     asChild
-                    className="w-full bg-sand text-navy hover:bg-sand/90 font-semibold"
+                    className="w-full bg-[#D6C6A5] text-[#0E1A2B] font-semibold rounded-full hover:bg-[#c4b48f] transition-colors"
                     size="sm"
                   >
-                    <Link href={`/t/${slug}/gear/packages/${pkg.id}`}>
+                    <Link href={`/team-booking?type=gear&package=${pkg.id}`}>
                       Reserve this package
                     </Link>
                   </Button>
+                  <p className="text-xs text-muted-foreground text-center mt-2">
+                    Free cancellation up to 48 hours before the tournament
+                  </p>
                 </div>
               </CardContent>
             </Card>

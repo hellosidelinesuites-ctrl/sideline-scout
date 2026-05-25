@@ -8,6 +8,10 @@ import type { Hotel } from '@/types/database'
 
 const TIDES_URL = 'https://www.foratravel.com/advisor/eric-mcdearman'
 
+function getDriveMinutes(miles: number): number {
+  return Math.round(Math.max(5, miles * 2.8))
+}
+
 function getBestFor(hotel: Hotel): string {
   const amenities = hotel.amenities.map((a) => a.toLowerCase())
   if (hotel.is_team_friendly) return 'Teams traveling together'
@@ -42,6 +46,17 @@ export default async function HotelsPage({ params }: { params: Promise<{ slug: s
         <p className="text-muted-foreground mt-1">Sorted by distance from the complex.</p>
       </div>
 
+      {/* Eric McDearman callout */}
+      <div className="bg-sand/20 border border-sand/50 rounded-xl p-5 mb-8">
+        <p className="font-semibold text-navy text-sm mb-1">Why book through Sideline Scout?</p>
+        <p className="text-sm text-muted-foreground leading-relaxed">
+          Eric McDearman, our travel partner at Tides & Timbers, specializes in youth sports family
+          travel. He knows which hotels do team blocks, which have gear storage, and which fill up
+          first for WCS. Booking through him costs nothing extra and often unlocks rates you
+          can&rsquo;t get on your own.
+        </p>
+      </div>
+
       {!hotels || hotels.length === 0 ? (
         <div className="text-center py-16 text-muted-foreground">
           <p>Hotel listings coming soon. Check back closer to the tournament.</p>
@@ -71,7 +86,7 @@ export default async function HotelsPage({ params }: { params: Promise<{ slug: s
                 </div>
                 <div className="flex items-center gap-1 text-muted-foreground text-sm">
                   <MapPin className="w-3.5 h-3.5" />
-                  {hotel.distance_miles} mi from venue
+                  {hotel.distance_miles} mi · ~{getDriveMinutes(hotel.distance_miles)} min drive
                 </div>
               </CardHeader>
               <CardContent className="space-y-3">

@@ -5,7 +5,7 @@ import ReactMarkdown from 'react-markdown'
 import { Button } from '@/components/ui/button'
 import { Textarea } from '@/components/ui/textarea'
 import { Badge } from '@/components/ui/badge'
-import { Send, Bot, User, Loader2 } from 'lucide-react'
+import { Send, Bot, User, Loader2, Share2, Check } from 'lucide-react'
 import { cn } from '@/lib/utils'
 
 interface Message {
@@ -46,8 +46,15 @@ export default function ScoutPage({
   const [messages, setMessages] = useState<Message[]>([])
   const [input, setInput] = useState('')
   const [loading, setLoading] = useState(false)
+  const [copied, setCopied] = useState(false)
   const bottomRef = useRef<HTMLDivElement>(null)
   const textareaRef = useRef<HTMLTextAreaElement>(null)
+
+  function handleShare() {
+    navigator.clipboard.writeText(window.location.href)
+    setCopied(true)
+    setTimeout(() => setCopied(false), 2000)
+  }
 
   useEffect(() => {
     params.then(({ slug }) => setSlug(slug))
@@ -102,16 +109,33 @@ export default function ScoutPage({
         <div className="flex-1 overflow-y-auto">
           <div className="max-w-2xl mx-auto px-4 pt-5 pb-6">
             {/* Compact header */}
-            <div className="flex items-center gap-3 mb-5">
-              <div className="w-9 h-9 rounded-full bg-navy flex items-center justify-center shrink-0">
-                <Bot className="w-4 h-4 text-sand" />
+            <div className="flex items-center justify-between gap-3 mb-4">
+              <div className="flex items-center gap-3">
+                <div className="w-9 h-9 rounded-full bg-navy flex items-center justify-center shrink-0">
+                  <Bot className="w-4 h-4 text-sand" />
+                </div>
+                <div>
+                  <h2 className="font-heading text-lg font-semibold text-navy leading-tight">Ask Scout</h2>
+                  <p className="text-muted-foreground text-xs">
+                    Real answers about this tournament — parking, food, weather, gear.
+                  </p>
+                </div>
               </div>
-              <div>
-                <h2 className="font-heading text-lg font-semibold text-navy leading-tight">Ask Scout</h2>
-                <p className="text-muted-foreground text-xs">
-                  Real answers about this tournament — parking, food, weather, gear.
-                </p>
-              </div>
+              <button
+                onClick={handleShare}
+                className="flex items-center gap-1.5 text-xs text-muted-foreground hover:text-navy transition-colors shrink-0 border border-border rounded-full px-3 py-1.5"
+              >
+                {copied ? <Check className="w-3 h-3 text-green-600" /> : <Share2 className="w-3 h-3" />}
+                {copied ? 'Copied!' : 'Share'}
+              </button>
+            </div>
+
+            {/* Trust bar */}
+            <div className="bg-sand/20 border border-sand/40 rounded-lg px-4 py-2.5 mb-4">
+              <p className="text-xs text-navy leading-snug">
+                <span className="font-semibold">Verified intel only.</span>{' '}
+                Answers grounded in venue data, parent tips, and real tournament knowledge — not generic search results.
+              </p>
             </div>
 
             {/* Sample Q&A — always expanded */}
@@ -145,7 +169,7 @@ export default function ScoutPage({
                 <button
                   key={q}
                   onClick={() => sendMessage(q)}
-                  className="text-xs px-3 py-1.5 rounded-full border border-border hover:border-navy hover:bg-navy/5 transition-colors"
+                  className="text-xs px-3 py-1.5 rounded-full bg-navy text-cream hover:bg-[#1a2d47] transition-colors"
                 >
                   {q}
                 </button>

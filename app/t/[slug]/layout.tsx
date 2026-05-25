@@ -83,10 +83,14 @@ export default async function TournamentLayout({ children, params }: Props) {
 
       <main className="flex-1">{children}</main>
 
-      <footer className="bg-navy text-steel text-xs text-center py-3 px-4">
-        <Link href="/feedback" className="hover:text-cream transition-colors">Submit a tip</Link>
+      <footer className="bg-navy text-steel text-xs text-center py-4 px-4 leading-relaxed">
+        Sideline Scout · Built by a lacrosse family · Gear for Good program
         {' · '}
-        <Link href="/host" className="hover:text-cream transition-colors">Become a host</Link>
+        <a href="mailto:hello@sidelinescout.com" className="hover:text-cream transition-colors">
+          hello@sidelinescout.com
+        </a>
+        {' · '}
+        <Link href="/feedback" className="hover:text-cream transition-colors">Submit a tip</Link>
       </footer>
     </div>
   )
