@@ -6,6 +6,17 @@ import { Button } from '@/components/ui/button'
 import { MapPin, Star, ExternalLink, Users } from 'lucide-react'
 import type { Hotel } from '@/types/database'
 
+const TIDES_URL = 'https://www.foratravel.com/advisor/eric-mcdearman'
+
+function getBestFor(hotel: Hotel): string {
+  const amenities = hotel.amenities.map((a) => a.toLowerCase())
+  if (hotel.is_team_friendly) return 'Teams traveling together'
+  if (amenities.some((a) => a.includes('pool') || a.includes('waterpark'))) return 'Families with kids'
+  if ((hotel.star_rating ?? 0) >= 4) return 'Families wanting extra comfort'
+  if (hotel.price_per_night < 150) return 'Budget-conscious families'
+  return 'Families & solo travelers'
+}
+
 export default async function HotelsPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params
   const supabase = await createClient()
@@ -77,6 +88,10 @@ export default async function HotelsPage({ params }: { params: Promise<{ slug: s
                   )}
                 </div>
 
+                <p className="text-xs text-muted-foreground">
+                  <span className="font-medium text-navy">Best for:</span> {getBestFor(hotel)}
+                </p>
+
                 {hotel.amenities.length > 0 && (
                   <div className="flex flex-wrap gap-1">
                     {hotel.amenities.slice(0, 4).map((a) => (
@@ -89,22 +104,19 @@ export default async function HotelsPage({ params }: { params: Promise<{ slug: s
                   <p className="text-sm text-muted-foreground">{hotel.notes}</p>
                 )}
 
-                {(hotel.booking_url || hotel.affiliate_url) && (
-                  <Button
-                    asChild
-                    className="w-full bg-navy text-cream hover:bg-navy/90"
-                    size="sm"
-                  >
-                    <a
-                      href={hotel.affiliate_url ?? hotel.booking_url ?? '#'}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      Book Now
-                      <ExternalLink className="w-3.5 h-3.5 ml-1.5" />
-                    </a>
-                  </Button>
-                )}
+                <Button
+                  asChild
+                  className="w-full bg-sand text-navy hover:bg-sand/90 font-semibold"
+                  size="sm"
+                >
+                  <a href={TIDES_URL} target="_blank" rel="noopener noreferrer">
+                    Book with Tides & Timbers
+                    <ExternalLink className="w-3.5 h-3.5 ml-1.5" />
+                  </a>
+                </Button>
+                <p className="text-xs text-muted-foreground text-center leading-snug">
+                  Rates vary by dates and availability. Final pricing confirmed at booking.
+                </p>
               </CardContent>
             </Card>
           ))}

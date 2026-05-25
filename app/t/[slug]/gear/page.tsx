@@ -3,9 +3,49 @@ import { notFound } from 'next/navigation'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
-import { ShoppingBag, Shield, Zap, MapPin } from 'lucide-react'
+import { ShoppingBag, Shield, Zap, MapPin, CheckCircle2 } from 'lucide-react'
 import { PLATFORM_FEE_RATE, UPSELL_PRICES } from '@/types/database'
 import type { GearListing } from '@/types/database'
+import Link from 'next/link'
+
+// ─── Managed packages ─────────────────────────────────────────────────────────
+
+const PACKAGES = [
+  {
+    id: 'family-sideline-kit',
+    name: 'Family Sideline Kit',
+    price: 85,
+    badge: 'Most Popular',
+    bestFor: 'Families with 1–2 players',
+    includes: ['2 folding chairs', 'Shade umbrella', 'Cooler with ice'],
+    description: 'Everything a family needs for a comfortable tournament day. Set up and tear down handled by us.',
+  },
+  {
+    id: 'team-basecamp',
+    name: 'Team Basecamp',
+    price: 350,
+    badge: 'Best for Teams',
+    bestFor: 'Teams of 10–15 players',
+    includes: ['10 folding chairs', '10×10 pop-up canopy', '2 large coolers', 'Folding table'],
+    description: 'A full sideline command center for your team. We handle logistics so coaches can focus on the game.',
+  },
+  {
+    id: 'premium-team-suite',
+    name: 'Premium Team Suite',
+    price: 750,
+    badge: 'Premium',
+    bestFor: 'Teams wanting a VIP experience',
+    includes: [
+      '10 folding chairs',
+      '10×10 pop-up canopy',
+      '2 large coolers',
+      'Folding table',
+      'Snacks & drinks',
+      'Priority setup at your field',
+    ],
+    description: 'Everything in Team Basecamp plus premium extras. Your sideline, sorted before you arrive.',
+  },
+]
 
 export default async function GearPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params
@@ -31,12 +71,12 @@ export default async function GearPage({ params }: { params: Promise<{ slug: str
       <div className="mb-6">
         <h1 className="font-heading text-3xl font-bold text-navy">Gear Rentals</h1>
         <p className="text-muted-foreground mt-1">
-          Rent from local hosts. {Math.round(PLATFORM_FEE_RATE * 100)}% platform fee included at checkout.
+          Managed packages and local host listings for {tournament.name}.
         </p>
       </div>
 
       {/* Upsells callout */}
-      <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 mb-8">
+      <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 mb-10">
         <div className="flex items-start gap-3 p-3 rounded-lg bg-sand/20 border border-sand/40">
           <Zap className="w-4 h-4 text-navy mt-0.5 shrink-0" />
           <div>
@@ -60,63 +100,125 @@ export default async function GearPage({ params }: { params: Promise<{ slug: str
         </div>
       </div>
 
-      {!listings || listings.length === 0 ? (
-        <div className="text-center py-16 text-muted-foreground">
-          <ShoppingBag className="w-10 h-10 mx-auto mb-3 opacity-30" />
-          <p>No gear listed yet. Check back closer to the tournament.</p>
-          <p className="text-sm mt-1">
-            Want to list gear?{' '}
-            <a href="/host" className="text-navy underline underline-offset-2">Become a host</a>
-          </p>
+      {/* ── Managed packages ── */}
+      <div className="mb-10">
+        <div className="flex items-center gap-3 mb-4">
+          <h2 className="font-heading text-xl font-bold text-navy">Sideline Suites Packages</h2>
+          <Badge className="bg-navy text-cream border-0 text-xs">Managed by us</Badge>
         </div>
-      ) : (
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-          {listings.map((listing: GearListing & { hosts: { name: string } | null }) => (
-            <Card key={listing.id} className="overflow-hidden hover:shadow-md transition-shadow">
-              {listing.image_url && (
-                // eslint-disable-next-line @next/next/no-img-element
-                <img
-                  src={listing.image_url}
-                  alt={listing.title}
-                  className="w-full h-36 object-cover"
-                />
-              )}
-              <CardHeader className="pb-2">
-                <div className="flex items-start justify-between gap-2">
-                  <CardTitle className="font-heading text-base text-navy leading-tight">
-                    {listing.title}
-                  </CardTitle>
-                  <Badge variant="secondary" className="text-xs shrink-0">{listing.category}</Badge>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+          {PACKAGES.map((pkg) => (
+            <Card
+              key={pkg.id}
+              className="overflow-hidden border-sand/40 hover:shadow-md transition-shadow flex flex-col"
+            >
+              <CardHeader className="pb-3 bg-navy text-cream">
+                <div className="flex items-start justify-between gap-2 mb-1">
+                  <CardTitle className="font-heading text-lg leading-tight">{pkg.name}</CardTitle>
+                  <Badge className="bg-sand text-navy border-0 text-xs shrink-0">{pkg.badge}</Badge>
                 </div>
-                {listing.hosts && (
-                  <p className="text-xs text-muted-foreground">by {listing.hosts.name}</p>
-                )}
+                <p className="text-steel text-xs">{pkg.bestFor}</p>
               </CardHeader>
-              <CardContent className="space-y-3">
-                {listing.description && (
-                  <p className="text-sm text-muted-foreground line-clamp-2">{listing.description}</p>
-                )}
-                <div className="flex items-center justify-between">
-                  <span className="text-xl font-bold text-navy">
-                    ${listing.price_per_day}
-                    <span className="text-sm font-normal text-muted-foreground">/day</span>
-                  </span>
-                  <span className="text-xs text-muted-foreground">
-                    {listing.quantity_available} left
-                  </span>
+              <CardContent className="pt-4 flex flex-col flex-1 space-y-4">
+                <p className="text-sm text-muted-foreground leading-relaxed">{pkg.description}</p>
+                <ul className="space-y-1.5">
+                  {pkg.includes.map((item) => (
+                    <li key={item} className="flex items-center gap-2 text-sm text-navy">
+                      <CheckCircle2 className="w-3.5 h-3.5 text-sand shrink-0" />
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+                <div className="mt-auto pt-2">
+                  <p className="font-heading text-2xl font-bold text-navy mb-3">
+                    ${pkg.price}
+                    <span className="text-sm font-normal text-muted-foreground">/weekend</span>
+                  </p>
+                  <Button
+                    asChild
+                    className="w-full bg-sand text-navy hover:bg-sand/90 font-semibold"
+                    size="sm"
+                  >
+                    <Link href={`/t/${slug}/gear/packages/${pkg.id}`}>
+                      Reserve this package
+                    </Link>
+                  </Button>
                 </div>
-                <Button
-                  asChild
-                  className="w-full bg-navy text-cream hover:bg-navy/90"
-                  size="sm"
-                >
-                  <a href={`/t/${slug}/gear/${listing.id}`}>Reserve</a>
-                </Button>
               </CardContent>
             </Card>
           ))}
         </div>
-      )}
+      </div>
+
+      {/* ── Host listings ── */}
+      <div>
+        <div className="flex items-center justify-between mb-4">
+          <h2 className="font-heading text-xl font-bold text-navy">Individual Items from Local Hosts</h2>
+          <span className="text-xs text-muted-foreground">
+            {Math.round(PLATFORM_FEE_RATE * 100)}% platform fee included at checkout
+          </span>
+        </div>
+
+        {!listings || listings.length === 0 ? (
+          <div className="text-center py-12 text-muted-foreground border border-dashed border-border rounded-xl">
+            <ShoppingBag className="w-10 h-10 mx-auto mb-3 opacity-30" />
+            <p>No individual listings yet for this tournament.</p>
+            <p className="text-sm mt-1">
+              Have gear to rent?{' '}
+              <Link href="/host" className="text-navy underline underline-offset-2">
+                Become a Provider
+              </Link>
+            </p>
+          </div>
+        ) : (
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+            {listings.map((listing: GearListing & { hosts: { name: string } | null }) => (
+              <Card key={listing.id} className="overflow-hidden hover:shadow-md transition-shadow">
+                {listing.image_url && (
+                  // eslint-disable-next-line @next/next/no-img-element
+                  <img
+                    src={listing.image_url}
+                    alt={listing.title}
+                    className="w-full h-36 object-cover"
+                  />
+                )}
+                <CardHeader className="pb-2">
+                  <div className="flex items-start justify-between gap-2">
+                    <CardTitle className="font-heading text-base text-navy leading-tight">
+                      {listing.title}
+                    </CardTitle>
+                    <Badge variant="secondary" className="text-xs shrink-0">{listing.category}</Badge>
+                  </div>
+                  {listing.hosts && (
+                    <p className="text-xs text-muted-foreground">by {listing.hosts.name}</p>
+                  )}
+                </CardHeader>
+                <CardContent className="space-y-3">
+                  {listing.description && (
+                    <p className="text-sm text-muted-foreground line-clamp-2">{listing.description}</p>
+                  )}
+                  <div className="flex items-center justify-between">
+                    <span className="text-xl font-bold text-navy">
+                      ${listing.price_per_day}
+                      <span className="text-sm font-normal text-muted-foreground">/day</span>
+                    </span>
+                    <span className="text-xs text-muted-foreground">
+                      {listing.quantity_available} left
+                    </span>
+                  </div>
+                  <Button
+                    asChild
+                    className="w-full bg-navy text-cream hover:bg-navy/90"
+                    size="sm"
+                  >
+                    <a href={`/t/${slug}/gear/${listing.id}`}>Reserve</a>
+                  </Button>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        )}
+      </div>
     </div>
   )
 }

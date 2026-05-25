@@ -43,8 +43,8 @@ export default function HomePage() {
             variant="outline"
             className="border-steel text-cream hover:bg-white/10"
           >
-            <Link href={`/t/${FEATURED_TOURNAMENT.slug}/hotels`}>
-              View Hotels
+            <Link href="/team-booking">
+              Plan for My Team
             </Link>
           </Button>
         </div>
@@ -160,6 +160,12 @@ export default function HomePage() {
           </div>
         </div>
       </section>
+
+      <div className="bg-cream px-6 py-5 text-center border-t border-border">
+        <p className="text-sm text-muted-foreground italic">
+          Built by a lacrosse family. Jack, Harris, and Gracie have played on these fields.
+        </p>
+      </div>
 
       <footer className="bg-navy text-steel text-xs text-center py-4 px-6">
         © {new Date().getFullYear()} Sideline Scout ·{' '}

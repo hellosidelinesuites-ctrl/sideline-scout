@@ -22,6 +22,21 @@ const QUICK_QUESTIONS = [
   'Nearest grocery store?',
 ]
 
+const SAMPLE_QA = [
+  {
+    q: 'Where should we park for early games?',
+    a: 'Arrive by 7:30 AM — the main lot fills fast once gates open at 8. Free overflow parking is across the street at the office park and usually has space. Avoid Persian Dr; the city tickets aggressively on tournament weekends. Carpooling saves 10–15 min of walking.',
+  },
+  {
+    q: 'Where should our team eat dinner?',
+    a: 'Top pick for teams: **Lazy Dog Restaurant & Bar** (1.2 mi) — spacious booths, kids menu, full bar. OpenTable reservations strongly recommended on weekends. **BJ\'s Brewhouse** (2.1 mi) is another solid group option with deep dish pizza and a huge menu. Both can handle large parties.',
+  },
+  {
+    q: "What's the weather forecast for tournament weekend?",
+    a: 'Forecast for July 18–19: highs of 88–91°F, sunny with less than 5% chance of rain. Bay breezes typically pick up in the afternoon. Bring sunscreen (reapply every 90 min on turf), cooling towels, and at least 1 gallon of water per person per day.',
+  },
+]
+
 export default function ScoutPage({
   params,
 }: {
@@ -84,24 +99,58 @@ export default function ScoutPage({
     <div className="flex flex-col h-[calc(100vh-8rem)]">
       {/* Empty state */}
       {messages.length === 0 && (
-        <div className="flex-1 flex flex-col items-center justify-center px-4 text-center pb-4">
-          <div className="w-12 h-12 rounded-full bg-navy flex items-center justify-center mb-4">
-            <Bot className="w-6 h-6 text-sand" />
-          </div>
-          <h2 className="font-heading text-2xl font-semibold text-navy mb-2">Ask Scout</h2>
-          <p className="text-muted-foreground text-sm max-w-sm mb-6">
-            I know everything about this tournament — hotels, food, parking, weather, gear. Ask away.
-          </p>
-          <div className="flex flex-wrap gap-2 justify-center max-w-lg">
-            {QUICK_QUESTIONS.map((q) => (
-              <button
-                key={q}
-                onClick={() => sendMessage(q)}
-                className="text-xs px-3 py-1.5 rounded-full border border-border hover:border-navy hover:bg-navy/5 transition-colors text-left"
-              >
-                {q}
-              </button>
-            ))}
+        <div className="flex-1 overflow-y-auto">
+          <div className="max-w-2xl mx-auto px-4 pt-5 pb-6">
+            {/* Compact header */}
+            <div className="flex items-center gap-3 mb-5">
+              <div className="w-9 h-9 rounded-full bg-navy flex items-center justify-center shrink-0">
+                <Bot className="w-4 h-4 text-sand" />
+              </div>
+              <div>
+                <h2 className="font-heading text-lg font-semibold text-navy leading-tight">Ask Scout</h2>
+                <p className="text-muted-foreground text-xs">
+                  Real answers about this tournament — parking, food, weather, gear.
+                </p>
+              </div>
+            </div>
+
+            {/* Sample Q&A — always expanded */}
+            <div className="space-y-3 mb-5">
+              {SAMPLE_QA.map((item) => (
+                <div key={item.q} className="rounded-xl border border-border bg-white overflow-hidden">
+                  <div className="flex items-center gap-2.5 px-4 py-2.5 border-b border-border/60 bg-muted/40">
+                    <div className="w-5 h-5 rounded-full bg-steel/20 flex items-center justify-center shrink-0">
+                      <User className="w-2.5 h-2.5 text-steel" />
+                    </div>
+                    <span className="text-sm font-medium text-navy">{item.q}</span>
+                  </div>
+                  <div className="flex gap-2.5 px-4 py-3">
+                    <div className="w-5 h-5 rounded-full bg-navy flex items-center justify-center shrink-0 mt-0.5">
+                      <Bot className="w-2.5 h-2.5 text-sand" />
+                    </div>
+                    <p className="text-sm text-foreground leading-relaxed">
+                      {item.a.split(/\*\*(.+?)\*\*/).map((part, i) =>
+                        i % 2 === 1 ? <strong key={i} className="font-semibold">{part}</strong> : part
+                      )}
+                    </p>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            {/* Quick question chips */}
+            <p className="text-xs text-muted-foreground mb-2 font-medium">Or ask something else:</p>
+            <div className="flex flex-wrap gap-2">
+              {QUICK_QUESTIONS.map((q) => (
+                <button
+                  key={q}
+                  onClick={() => sendMessage(q)}
+                  className="text-xs px-3 py-1.5 rounded-full border border-border hover:border-navy hover:bg-navy/5 transition-colors"
+                >
+                  {q}
+                </button>
+              ))}
+            </div>
           </div>
         </div>
       )}
