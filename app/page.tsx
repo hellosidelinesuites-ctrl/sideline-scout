@@ -58,7 +58,7 @@ export default function HomePage() {
 
       {/* ── Hero ── */}
       <section
-        className="text-cream px-6 py-16 md:py-20 text-center relative overflow-hidden"
+        className="text-cream px-6 pt-16 md:pt-20 pb-8 md:pb-12 text-center relative overflow-hidden bg-[#0E1A2B]"
         style={{
           backgroundImage: `url('/images/hero-setup.jpg')`,
           backgroundSize: 'cover',
@@ -66,7 +66,7 @@ export default function HomePage() {
         }}
       >
         {/* Navy overlay */}
-        <div className="absolute inset-0 bg-navy/75" />
+        <div className="absolute inset-0 bg-[#0E1A2B]/80" />
         <div className="relative max-w-3xl mx-auto">
           <Badge className="mb-5 bg-sand text-navy border-0 text-sm px-4 py-1">
             Beta — First tournament live
