@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { createClient } from '@/lib/supabase/server'
+import { sendNotification } from '@/lib/notify'
 
 export async function POST(req: NextRequest) {
   const body = await req.json()
@@ -21,6 +22,15 @@ export async function POST(req: NextRequest) {
     console.error('Team booking event error:', error)
     return NextResponse.json({ error: 'Failed to submit request' }, { status: 500 })
   }
+
+  await sendNotification('New Team Booking Request', {
+    'Manager Name': manager_name,
+    'Email': email,
+    'Team Name': team_name,
+    'Team Size': team_size,
+    'Tournament': tournament,
+    'Needs / Notes': needs,
+  })
 
   return NextResponse.json({ success: true })
 }

@@ -3,6 +3,7 @@ import { createClient } from '@/lib/supabase/server'
 import { notFound } from 'next/navigation'
 import { MessageSquare, Hotel, ShoppingBag, Home } from 'lucide-react'
 import type { Metadata } from 'next'
+import EmailCaptureBanner from '@/components/email-capture-banner'
 
 interface Props {
   children: React.ReactNode
@@ -82,8 +83,10 @@ export default async function TournamentLayout({ children, params }: Props) {
       </header>
 
       <main className="flex-1">{children}</main>
+      <EmailCaptureBanner tournamentSlug={slug} tournamentName={tournament.name} />
 
-      <footer className="bg-navy text-steel text-xs text-center py-4 px-4 leading-relaxed">
+      <footer className="bg-navy text-steel text-xs text-center py-5 px-4 leading-relaxed">
+        <p className="text-[#D6C6A5] font-medium text-sm mb-2">Tournament weekend. Locked in.</p>
         Sideline Scout · Built by a lacrosse family · Gear for Good program
         {' · '}
         <a href="mailto:hello@sidelinescout.com" className="hover:text-cream transition-colors">

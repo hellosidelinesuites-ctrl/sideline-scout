@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { createClient } from '@/lib/supabase/server'
+import { sendNotification } from '@/lib/notify'
 
 export async function POST(req: NextRequest) {
   const { name, email, phone, tournament, message } = await req.json()
@@ -31,6 +32,14 @@ export async function POST(req: NextRequest) {
     console.error('Host insert error:', error)
     return NextResponse.json({ error: 'Failed to save application' }, { status: 500 })
   }
+
+  await sendNotification('New Gear Host Application', {
+    'Name': name,
+    'Email': email,
+    'Phone': phone,
+    'Tournament': tournament,
+    'Message': message,
+  })
 
   return NextResponse.json({ success: true })
 }

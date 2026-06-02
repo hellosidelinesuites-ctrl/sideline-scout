@@ -5,6 +5,7 @@ import {
   MapPin, MessageSquare, ShoppingBag, Hotel, Quote,
   Search, CalendarCheck, Heart,
 } from 'lucide-react'
+import EmailCaptureSection from '@/components/email-capture-section'
 
 const FEATURED_TOURNAMENT = {
   slug: 'west-coast-showdown-2026',
@@ -57,19 +58,25 @@ export default function HomePage() {
 
       {/* ── Hero ── */}
       <section
-        className="bg-navy text-cream px-6 py-20 md:py-24 text-center relative overflow-hidden"
+        className="text-cream px-6 py-20 md:py-24 text-center relative overflow-hidden"
         style={{
-          backgroundImage: `radial-gradient(circle, rgba(214,198,165,0.07) 1px, transparent 1px)`,
-          backgroundSize: '22px 22px',
+          backgroundImage: `url('/images/hero-setup.jpg')`,
+          backgroundSize: 'cover',
+          backgroundPosition: 'center top',
         }}
       >
+        {/* Navy overlay */}
+        <div className="absolute inset-0 bg-navy/75" />
         <div className="relative max-w-3xl mx-auto">
           <Badge className="mb-5 bg-sand text-navy border-0 text-sm px-4 py-1">
             Beta — First tournament live
           </Badge>
-          <h1 className="font-heading text-5xl md:text-7xl font-bold mb-5 leading-tight">
+          <h1 className="font-heading text-5xl md:text-7xl font-bold mb-3 leading-tight">
             Your tournament<br className="hidden sm:block" /> weekend, sorted.
           </h1>
+          <p className="text-[#D6C6A5] text-base md:text-lg font-medium tracking-wide mb-8">
+            Tournament weekend. Locked in.
+          </p>
           <p className="text-steel text-lg md:text-xl max-w-xl mx-auto mb-10 leading-relaxed">
             Sideline Scout is the AI-powered travel concierge for youth sports families.
             Hotels, gear, food, parking — everything in one place.
@@ -221,6 +228,8 @@ export default function HomePage() {
         </div>
       </section>
 
+      <EmailCaptureSection />
+
       {/* ── Gear for Good ── */}
       <section className="bg-navy text-cream px-6 py-14">
         <div className="max-w-2xl mx-auto text-center">
@@ -233,8 +242,7 @@ export default function HomePage() {
           </h2>
           <p className="text-steel text-base leading-relaxed">
             At the end of every season, unclaimed and donated gear goes to youth athletes who
-            can&rsquo;t afford their own equipment. Built by a lacrosse family — Jack, Harris, and
-            Gracie have played on these fields.
+            can&rsquo;t afford their own equipment. Built by a lacrosse family — we&rsquo;ve played on these fields.
           </p>
         </div>
       </section>

@@ -37,6 +37,7 @@ const PACKAGES = [
     includes: ['2 folding chairs', 'Shade umbrella', 'Cooler with ice'],
     description: 'Everything a family needs for a comfortable tournament day. Set up and tear down handled by us.',
     highlight: false,
+    image: '/images/family-setup.jpg',
   },
   {
     id: 'basecamp',
@@ -47,6 +48,7 @@ const PACKAGES = [
     includes: ['10 folding chairs', '10×10 pop-up canopy', '2 large coolers', 'Folding table'],
     description: 'A full sideline command center for your team. We handle logistics so coaches can focus on the game.',
     highlight: true,
+    image: '/images/team-basecamp.jpg',
   },
   {
     id: 'premium',
@@ -64,6 +66,7 @@ const PACKAGES = [
     ],
     description: 'Everything in Team Basecamp plus premium extras. Your sideline, sorted before you arrive.',
     highlight: false,
+    image: '/images/premium-setup.jpg',
   },
 ]
 
@@ -167,6 +170,14 @@ export default async function GearPage({ params }: { params: Promise<{ slug: str
                   : 'border border-sand/40 hover:shadow-md ring-0'
               }`}
             >
+              {pkg.image && (
+                // eslint-disable-next-line @next/next/no-img-element
+                <img
+                  src={pkg.image}
+                  alt={pkg.name}
+                  className="w-full h-40 object-cover"
+                />
+              )}
               {pkg.highlight && (
                 <div className="bg-navy text-cream text-xs font-semibold text-center py-1.5 tracking-wide">
                   ★ MOST POPULAR
