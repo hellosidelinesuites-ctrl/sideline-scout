@@ -1,10 +1,7 @@
 import Link from 'next/link'
 import { Badge } from '@/components/ui/badge'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
-import {
-  MapPin, MessageSquare, ShoppingBag, Hotel, Quote,
-  Search, CalendarCheck, Heart,
-} from 'lucide-react'
+import { MapPin, MessageSquare, ShoppingBag, Hotel, Heart } from 'lucide-react'
 import EmailCaptureSection from '@/components/email-capture-section'
 
 const FEATURED_TOURNAMENT = {
@@ -66,17 +63,17 @@ const TESTIMONIALS = [
 
 const HOW_IT_WORKS = [
   {
-    icon: Search,
+    number: '01',
     title: 'Find your tournament',
     body: 'We build a dedicated hub for your event with curated local intel — hotels, parking, food, and gear — sourced from real families.',
   },
   {
-    icon: MessageSquare,
+    number: '02',
     title: 'Ask Scout anything',
     body: 'Our AI concierge answers your questions grounded in real venue data and parent tips, not generic search results.',
   },
   {
-    icon: CalendarCheck,
+    number: '03',
     title: 'Book & show up ready',
     body: 'Reserve gear, lock in a hotel, and share your game plan with your team group chat — all in one place.',
   },
@@ -87,9 +84,8 @@ export default function HomePage() {
     <div className="flex flex-col min-h-screen">
 
       {/* ── Hero ── */}
-      <section className="bg-[#0E1A2B] text-cream px-6 pt-16 md:pt-20 pb-8 md:pb-12 text-center relative">
-        <div className="absolute inset-0" />
-        <div className="relative max-w-3xl mx-auto">
+      <section className="bg-[#0E1A2B] text-cream px-6 pt-16 md:pt-20 pb-8 md:pb-12 text-center">
+        <div className="max-w-3xl mx-auto">
           <Badge className="mb-5 bg-sand text-navy border-0 text-sm px-4 py-1">
             Beta — First tournament live
           </Badge>
@@ -121,7 +117,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ── Honest trust strip ── */}
+      {/* ── Stats strip ── */}
       <section className="bg-sand/20 border-y border-sand/40 py-3 px-6 text-center">
         <p className="text-sm text-navy font-medium">
           First tournament:{' '}
@@ -131,7 +127,7 @@ export default function HomePage() {
       </section>
 
       {/* ── Featured tournament ── */}
-      <section className="bg-cream px-6 py-14">
+      <section className="bg-cream px-6 py-16">
         <div className="max-w-4xl mx-auto">
           <p className="text-steel text-sm font-medium uppercase tracking-widest mb-5">
             Featured Tournament
@@ -201,44 +197,8 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ── Coming soon tournaments ── */}
-      <section className="bg-white px-6 py-12">
-        <div className="max-w-4xl mx-auto">
-          <h2 className="font-heading text-2xl font-bold text-navy mb-1">More tournaments coming</h2>
-          <p className="text-[#555] text-sm mb-6">
-            Sideline Scout is expanding sport by sport, venue by venue. Want your tournament added?{' '}
-            <Link href="/team-booking" className="text-navy font-medium underline underline-offset-2 hover:text-[#1a2d47]">
-              Request a tournament →
-            </Link>
-          </p>
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-            {COMING_SOON.map((t) => (
-              <div key={t.name} className="opacity-60 rounded-2xl border border-border overflow-hidden">
-                <div className="bg-navy text-cream px-5 py-4">
-                  <div className="flex items-start justify-between gap-2 mb-2">
-                    <p className="font-heading font-semibold text-base leading-tight">{t.name}</p>
-                    <span className="shrink-0 text-xs font-medium bg-white/15 text-white border border-white/20 rounded-full px-2.5 py-0.5">
-                      Coming Soon
-                    </span>
-                  </div>
-                  <p className="text-sand text-xs">{t.organizer} · {t.sport}</p>
-                </div>
-                <div className="bg-cream px-5 py-4 space-y-1.5">
-                  <div className="flex items-center gap-1.5 text-[#555] text-xs">
-                    <MapPin className="w-3 h-3 shrink-0" />
-                    {t.venue}{t.city ? ` · ${t.city}` : ''}
-                  </div>
-                  <p className="text-xs text-[#555]">{t.dates}</p>
-                  <p className="text-xs text-[#888] italic">{t.note}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* ── Testimonials ── */}
-      <section className="bg-white px-6 py-14">
+      <section className="bg-white px-6 py-16">
         <div className="max-w-4xl mx-auto">
           <h2 className="font-heading text-3xl font-bold text-navy text-center mb-2">
             What parents are saying
@@ -248,13 +208,12 @@ export default function HomePage() {
             {TESTIMONIALS.map((t) => (
               <div
                 key={t.author}
-                className="bg-cream rounded-2xl p-6 flex flex-col gap-4 border border-sand/30 shadow-sm"
+                className="bg-cream rounded-2xl p-6 flex flex-col border-l-4 border-[#D6C6A5] shadow-sm"
               >
-                <Quote className="w-6 h-6 text-sand shrink-0" />
-                <p className="text-navy text-base leading-relaxed flex-1">&ldquo;{t.quote}&rdquo;</p>
-                <div>
+                <p className="text-navy text-base leading-relaxed flex-1 mb-5">&ldquo;{t.quote}&rdquo;</p>
+                <div className="pt-4 border-t border-sand/40">
                   <p className="font-semibold text-navy text-sm">{t.author}</p>
-                  <p className="text-xs text-[#555]">{t.role}</p>
+                  <p className="text-xs text-[#555] mt-0.5">{t.role}</p>
                 </div>
               </div>
             ))}
@@ -263,7 +222,7 @@ export default function HomePage() {
       </section>
 
       {/* ── How it works ── */}
-      <section className="bg-cream px-6 py-14">
+      <section className="bg-cream px-6 py-16">
         <div className="max-w-4xl mx-auto">
           <h2 className="font-heading text-3xl font-bold text-navy text-center mb-2">
             How it works
@@ -275,11 +234,50 @@ export default function HomePage() {
                 key={item.title}
                 className="bg-white rounded-2xl p-6 shadow-sm border border-border"
               >
-                <div className="w-10 h-10 rounded-xl bg-navy/6 flex items-center justify-center mb-4">
-                  <item.icon className="w-5 h-5 text-navy" />
-                </div>
+                <p className="font-['Playfair_Display'] text-[#D6C6A5] text-4xl font-bold mb-4 leading-none">
+                  {item.number}
+                </p>
                 <h3 className="font-heading font-semibold text-navy text-lg mb-2">{item.title}</h3>
                 <p className="text-[#555] text-base leading-relaxed">{item.body}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── Coming soon tournaments ── */}
+      <section className="bg-white px-6 py-16">
+        <div className="max-w-4xl mx-auto">
+          <h2 className="font-heading text-2xl font-bold text-navy mb-1">More tournaments coming</h2>
+          <p className="text-[#555] text-sm mb-8">
+            Sideline Scout is expanding sport by sport, venue by venue. Want your tournament added?{' '}
+            <Link href="/team-booking" className="text-navy font-medium underline underline-offset-2 hover:text-[#1a2d47]">
+              Request a tournament →
+            </Link>
+          </p>
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-5">
+            {COMING_SOON.map((t) => (
+              <div key={t.name} className="opacity-50 rounded-2xl border border-border overflow-hidden bg-white shadow-sm" style={{ minHeight: 140 }}>
+                <div className="bg-navy text-cream px-5 py-4">
+                  <div className="flex items-center gap-2 mb-2 flex-wrap">
+                    <span className="text-xs font-medium bg-white/20 text-white/90 border border-white/20 rounded-full px-2.5 py-0.5 shrink-0">
+                      Coming Soon
+                    </span>
+                    <span className="text-xs font-medium bg-sand/30 text-sand rounded-full px-2.5 py-0.5 shrink-0">
+                      {t.sport}
+                    </span>
+                  </div>
+                  <p className="font-heading font-semibold text-base leading-snug">{t.name}</p>
+                  <p className="text-sand/80 text-xs mt-1">{t.organizer}</p>
+                </div>
+                <div className="px-5 py-4 space-y-2">
+                  <div className="flex items-center gap-1.5 text-[#555] text-xs">
+                    <MapPin className="w-3 h-3 shrink-0" />
+                    {t.venue}{t.city ? ` · ${t.city}` : ''}
+                  </div>
+                  <p className="text-xs text-[#555]">{t.dates}</p>
+                  <p className="text-xs text-[#999] italic">{t.note}</p>
+                </div>
               </div>
             ))}
           </div>
@@ -289,7 +287,7 @@ export default function HomePage() {
       <EmailCaptureSection />
 
       {/* ── Gear for Good ── */}
-      <section className="bg-navy text-cream px-6 py-14">
+      <section className="bg-navy text-cream px-6 py-16">
         <div className="max-w-2xl mx-auto text-center">
           <div className="w-10 h-10 rounded-full bg-sand/20 flex items-center justify-center mx-auto mb-4">
             <Heart className="w-5 h-5 text-sand" />
@@ -306,7 +304,7 @@ export default function HomePage() {
       </section>
 
       {/* ── Footer CTAs ── */}
-      <section className="bg-cream px-6 py-12">
+      <section className="bg-cream px-6 py-16">
         <div className="max-w-4xl mx-auto flex flex-col sm:flex-row gap-4 justify-between items-center">
           <div>
             <p className="font-heading text-lg font-semibold text-navy">Ready to list your gear?</p>
