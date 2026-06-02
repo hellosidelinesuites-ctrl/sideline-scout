@@ -16,6 +16,36 @@ const FEATURED_TOURNAMENT = {
   city: 'Sunnyvale, CA',
 }
 
+const COMING_SOON = [
+  {
+    name: 'SASC Medina Fall Classic',
+    organizer: 'SASC',
+    dates: 'Sep 26–27, 2026',
+    venue: 'Twin Creeks Sports Complex',
+    city: 'Sunnyvale, CA',
+    sport: 'Soccer',
+    note: 'Same venue as West Coast Showdown',
+  },
+  {
+    name: 'NCTB South Bay Baseball Classic',
+    organizer: 'NCTB',
+    dates: 'Fall 2026',
+    venue: 'Twin Creeks Sports Complex',
+    city: 'Sunnyvale, CA',
+    sport: 'Baseball',
+    note: 'Official baseball partner at Twin Creeks',
+  },
+  {
+    name: 'Bay Area Travel Sports Weekend',
+    organizer: 'Bay Area Travel Sports',
+    dates: '2026–2027 Season',
+    venue: 'Bay Area, CA',
+    city: '',
+    sport: 'Multiple Sports',
+    note: 'Expanding to soccer, baseball, softball',
+  },
+]
+
 const TESTIMONIALS = [
   {
     quote: 'I showed up knowing exactly where to park, where to eat, and had our whole tent setup waiting. Game changer.',
@@ -57,16 +87,8 @@ export default function HomePage() {
     <div className="flex flex-col min-h-screen">
 
       {/* ── Hero ── */}
-      <section
-        className="text-cream px-6 pt-16 md:pt-20 pb-8 md:pb-12 text-center relative overflow-hidden bg-[#0E1A2B]"
-        style={{
-          backgroundImage: `url('/images/hero-setup.jpg')`,
-          backgroundSize: 'cover',
-          backgroundPosition: 'center top',
-        }}
-      >
-        {/* Navy overlay */}
-        <div className="absolute inset-0 bg-[#0E1A2B]/80" />
+      <section className="bg-[#0E1A2B] text-cream px-6 pt-16 md:pt-20 pb-8 md:pb-12 text-center relative">
+        <div className="absolute inset-0" />
         <div className="relative max-w-3xl mx-auto">
           <Badge className="mb-5 bg-sand text-navy border-0 text-sm px-4 py-1">
             Beta — First tournament live
@@ -176,6 +198,42 @@ export default function HomePage() {
               </div>
             </CardContent>
           </Card>
+        </div>
+      </section>
+
+      {/* ── Coming soon tournaments ── */}
+      <section className="bg-white px-6 py-12">
+        <div className="max-w-4xl mx-auto">
+          <h2 className="font-heading text-2xl font-bold text-navy mb-1">More tournaments coming</h2>
+          <p className="text-[#555] text-sm mb-6">
+            Sideline Scout is expanding sport by sport, venue by venue. Want your tournament added?{' '}
+            <Link href="/team-booking" className="text-navy font-medium underline underline-offset-2 hover:text-[#1a2d47]">
+              Request a tournament →
+            </Link>
+          </p>
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+            {COMING_SOON.map((t) => (
+              <div key={t.name} className="opacity-60 rounded-2xl border border-border overflow-hidden">
+                <div className="bg-navy text-cream px-5 py-4">
+                  <div className="flex items-start justify-between gap-2 mb-2">
+                    <p className="font-heading font-semibold text-base leading-tight">{t.name}</p>
+                    <span className="shrink-0 text-xs font-medium bg-white/15 text-white border border-white/20 rounded-full px-2.5 py-0.5">
+                      Coming Soon
+                    </span>
+                  </div>
+                  <p className="text-sand text-xs">{t.organizer} · {t.sport}</p>
+                </div>
+                <div className="bg-cream px-5 py-4 space-y-1.5">
+                  <div className="flex items-center gap-1.5 text-[#555] text-xs">
+                    <MapPin className="w-3 h-3 shrink-0" />
+                    {t.venue}{t.city ? ` · ${t.city}` : ''}
+                  </div>
+                  <p className="text-xs text-[#555]">{t.dates}</p>
+                  <p className="text-xs text-[#888] italic">{t.note}</p>
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 

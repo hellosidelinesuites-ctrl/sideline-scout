@@ -39,25 +39,27 @@ export default function EmailCaptureSection() {
             <p className="font-medium">You&rsquo;re on the list. Check your inbox before July 18.</p>
           </div>
         ) : (
-          <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
-            <input
-              type="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              placeholder="Your email address"
-              required
-              className="flex-1 rounded-full px-5 py-3 text-sm border border-sand bg-white text-navy placeholder:text-[#aaa] focus:outline-none focus:border-navy"
-            />
-            <button
-              type="submit"
-              disabled={loading}
-              className="inline-flex items-center justify-center gap-2 bg-navy text-cream font-semibold text-sm rounded-full px-7 py-3 hover:bg-[#1a2d47] transition-colors shrink-0 disabled:opacity-50"
-            >
-              <Send className="w-3.5 h-3.5" />
-              {loading ? 'Sending…' : 'Get the WCS guide'}
-            </button>
-          </form>
-          <p className="text-xs text-[#888] mt-3">No spam. Tournament intel only.</p>
+          <>
+            <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
+              <input
+                type="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                placeholder="Your email address"
+                required
+                className="flex-1 rounded-full px-5 py-3 text-sm border border-sand bg-white text-navy placeholder:text-[#aaa] focus:outline-none focus:border-navy"
+              />
+              <button
+                type="submit"
+                disabled={loading}
+                className="inline-flex items-center justify-center gap-2 bg-navy text-cream font-semibold text-sm rounded-full px-7 py-3 hover:bg-[#1a2d47] transition-colors shrink-0 disabled:opacity-50"
+              >
+                <Send className="w-3.5 h-3.5" />
+                {loading ? 'Sending…' : 'Get the WCS guide'}
+              </button>
+            </form>
+            <p className="text-xs text-[#888] mt-3">No spam. Tournament intel only.</p>
+          </>
         )}
       </div>
     </section>
