@@ -25,7 +25,7 @@ const QUICK_QUESTIONS = [
 const SAMPLE_QA = [
   {
     q: 'Where should we park for early games?',
-    a: 'Arrive by 7:30 AM — the main lot fills fast once gates open at 8. Free overflow parking is across the street at the office park and usually has space. Avoid Persian Dr; the city tickets aggressively on tournament weekends. Carpooling saves 10–15 min of walking.',
+    a: 'Arrive 30–45 minutes before warm-ups. Drop gear and family at the field entrance first, then go park — saves multiple trips. Main lots fill fast on peak mornings so early arrival helps. Wagons are allowed on all paved paths throughout the complex.',
   },
   {
     q: 'Where should our team eat dinner?',

@@ -89,8 +89,8 @@ export default async function TournamentLayout({ children, params }: Props) {
         <p className="text-[#D6C6A5] font-medium text-sm mb-2">Tournament weekend. Locked in.</p>
         Sideline Scout · Built by a lacrosse family · Gear for Good program
         {' · '}
-        <a href="mailto:hello@sidelinescout.com" className="hover:text-cream transition-colors">
-          hello@sidelinescout.com
+        <a href="mailto:hello@sidelinescout.co" className="hover:text-cream transition-colors">
+          hello@sidelinescout.co
         </a>
         {' · '}
         <Link href="/feedback" className="hover:text-cream transition-colors">Submit a tip</Link>

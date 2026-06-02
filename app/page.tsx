@@ -58,7 +58,7 @@ export default function HomePage() {
 
       {/* ── Hero ── */}
       <section
-        className="text-cream px-6 py-20 md:py-24 text-center relative overflow-hidden"
+        className="text-cream px-6 py-16 md:py-20 text-center relative overflow-hidden"
         style={{
           backgroundImage: `url('/images/hero-setup.jpg')`,
           backgroundSize: 'cover',
@@ -71,10 +71,10 @@ export default function HomePage() {
           <Badge className="mb-5 bg-sand text-navy border-0 text-sm px-4 py-1">
             Beta — First tournament live
           </Badge>
-          <h1 className="font-heading text-5xl md:text-7xl font-bold mb-3 leading-tight">
+          <h1 className="font-heading text-5xl md:text-7xl font-bold mb-4 leading-tight">
             Your tournament<br className="hidden sm:block" /> weekend, sorted.
           </h1>
-          <p className="text-[#D6C6A5] text-base md:text-lg font-medium tracking-wide mb-8">
+          <p className="font-['Playfair_Display'] text-[#D6C6A5] text-lg md:text-xl italic mb-4">
             Tournament weekend. Locked in.
           </p>
           <p className="text-steel text-lg md:text-xl max-w-xl mx-auto mb-10 leading-relaxed">
@@ -100,7 +100,7 @@ export default function HomePage() {
       </section>
 
       {/* ── Honest trust strip ── */}
-      <section className="bg-sand/20 border-y border-sand/40 py-4 px-6 text-center">
+      <section className="bg-sand/20 border-y border-sand/40 py-3 px-6 text-center">
         <p className="text-sm text-navy font-medium">
           First tournament:{' '}
           <span className="font-semibold">West Coast Showdown 2026</span>
@@ -275,8 +275,8 @@ export default function HomePage() {
         © {new Date().getFullYear()} Sideline Scout ·{' '}
         <Link href="/feedback" className="hover:text-cream transition-colors">Submit a tip</Link>
         {' · '}
-        <a href="mailto:hello@sidelinescout.com" className="hover:text-cream transition-colors">
-          hello@sidelinescout.com
+        <a href="mailto:hello@sidelinescout.co" className="hover:text-cream transition-colors">
+          hello@sidelinescout.co
         </a>
       </footer>
     </div>
