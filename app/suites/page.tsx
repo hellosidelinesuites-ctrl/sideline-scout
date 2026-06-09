@@ -4,6 +4,7 @@ import { Card, CardContent } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
 import {
   Tent, Users, Star, Check, Truck, ArrowRight, Shield, Zap,
+  Cloud, Map, Utensils, MessageSquare,
 } from 'lucide-react'
 
 const PACKAGES = [
@@ -225,6 +226,56 @@ export default function SuitesPage() {
                 </div>
               </div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Powered by Scout */}
+      <section className="bg-[#0E1A2B] text-cream px-6 py-16">
+        <div className="max-w-5xl mx-auto">
+          <div className="flex items-center justify-center gap-2 mb-2">
+            <MessageSquare className="w-4 h-4 text-[#D6C6A5]" />
+            <p className="text-[#D6C6A5] font-semibold text-sm uppercase tracking-widest">Powered by Sideline Scout</p>
+          </div>
+          <h2 className="font-heading text-3xl font-bold text-center mb-3">More than gear — we know your venue.</h2>
+          <p className="text-[#a0b4c8] text-center text-base mb-12 max-w-xl mx-auto">
+            Sideline Scout layers AI-powered local intel on top of every reservation so your team arrives informed, not guessing.
+          </p>
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
+            {[
+              {
+                Icon: Cloud,
+                title: 'Weather intel',
+                body: 'Scout monitors forecasts and advises on setup adjustments before your confirmation is sent.',
+              },
+              {
+                Icon: Map,
+                title: 'Venue knowledge',
+                body: 'Field maps, prime shade spots, parking entrances, and gate timing — specific to your venue.',
+              },
+              {
+                Icon: Utensils,
+                title: 'Local recommendations',
+                body: 'Team dinners, grocery runs, coffee stops, and family-friendly spots near the complex.',
+              },
+            ].map(({ Icon, title, body }) => (
+              <div key={title} className="flex flex-col items-center text-center gap-3 bg-white/5 border border-white/10 rounded-2xl p-6">
+                <div className="w-10 h-10 rounded-xl bg-[#D6C6A5]/10 flex items-center justify-center shrink-0">
+                  <Icon className="w-5 h-5 text-[#D6C6A5]" />
+                </div>
+                <p className="font-semibold text-cream text-base">{title}</p>
+                <p className="text-[#a0b4c8] text-sm leading-relaxed">{body}</p>
+              </div>
+            ))}
+          </div>
+          <div className="text-center mt-10">
+            <Link
+              href="/t/west-coast-showdown-2026/scout"
+              className="inline-flex items-center gap-2 font-semibold rounded-full px-7 py-3 border border-[#D6C6A5]/40 text-[#D6C6A5] hover:bg-white/5 transition-colors text-sm"
+            >
+              <MessageSquare className="w-4 h-4" />
+              Ask Scout about your venue →
+            </Link>
           </div>
         </div>
       </section>

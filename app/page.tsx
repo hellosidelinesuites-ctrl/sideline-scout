@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import { Badge } from '@/components/ui/badge'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
-import { MapPin, MessageSquare, ShoppingBag, Hotel, Heart, Tent, Users, Check } from 'lucide-react'
+import { MapPin, MessageSquare, ShoppingBag, Hotel, Heart, Tent, Users, Check, Compass } from 'lucide-react'
 import EmailCaptureSection from '@/components/email-capture-section'
 
 const FEATURED_TOURNAMENT = {
@@ -151,6 +151,12 @@ export default function HomePage() {
                   </li>
                 ))}
               </ul>
+              <div className="flex items-start gap-2.5 mb-8 border-l-2 border-[#D6C6A5]/40 pl-4">
+                <Compass className="w-4 h-4 text-[#D6C6A5] shrink-0 mt-0.5" />
+                <p className="text-[#a0b4c8] text-sm italic leading-snug">
+                  Every Sideline Suite comes with Scout — your AI guide for parking, weather, shade spots, and team dinner recommendations at the venue.
+                </p>
+              </div>
               <Link
                 href="/t/west-coast-showdown-2026/gear"
                 className="inline-flex items-center gap-2 font-semibold rounded-full px-8 py-3.5 bg-[#D6C6A5] text-[#0E1A2B] hover:bg-[#c4b48f] transition-colors text-sm"

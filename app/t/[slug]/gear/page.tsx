@@ -6,7 +6,7 @@ import { Button } from '@/components/ui/button'
 import {
   ShoppingBag, Shield, Zap, MapPin, ArrowRight,
   Armchair, Tent, Package, Umbrella, Utensils, Truck,
-  Users, Star, Check,
+  Users, Star, Check, MessageSquare,
 } from 'lucide-react'
 import { PLATFORM_FEE_RATE, UPSELL_PRICES } from '@/types/database'
 import type { GearListing } from '@/types/database'
@@ -221,6 +221,17 @@ export default async function GearPage({ params }: { params: Promise<{ slug: str
             Gear Protection <span className="text-[#555] font-normal">+$10</span>
           </div>
         </div>
+      </div>
+
+      {/* ── Scout intel banner ── */}
+      <div className="flex items-start gap-3 bg-[#0E1A2B] rounded-xl px-5 py-4 mb-10">
+        <MessageSquare className="w-4 h-4 text-[#D6C6A5] shrink-0 mt-0.5" />
+        <p className="text-[#a0b4c8] text-sm leading-snug">
+          Sideline Scout knows Twin Creeks Sports Complex inside and out — ask about shade spots, parking, and field locations before you arrive.{' '}
+          <Link href={`/t/${slug}/scout`} className="text-[#D6C6A5] font-medium hover:underline">
+            Ask Scout →
+          </Link>
+        </p>
       </div>
 
       {/* ── Host listings ── */}
