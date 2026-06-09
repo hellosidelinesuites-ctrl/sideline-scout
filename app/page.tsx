@@ -90,19 +90,19 @@ export default function HomePage() {
             Beta — First tournament live
           </Badge>
           <h1 className="font-heading text-5xl md:text-7xl font-bold mb-6 leading-tight">
-            Tournament weekend.<br className="hidden sm:block" /> Locked in.
+            Your team&rsquo;s sideline, sorted.
           </h1>
           <p className="text-steel text-lg md:text-xl max-w-xl mx-auto mb-8 leading-relaxed">
-            Sideline Scout is the AI-powered travel concierge for youth sports families.
-            Hotels, gear, food, parking — everything in one place.
+            Sideline Suites delivers canopies, chairs, coolers, and team tables directly to your field.
+            Powered by Sideline Scout for weather, parking, hotels, and local tournament intel.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
             <Link
-              href={`/t/${FEATURED_TOURNAMENT.slug}/scout`}
+              href={`/t/${FEATURED_TOURNAMENT.slug}/gear`}
               className="inline-flex items-center gap-2 text-base font-semibold rounded-full px-8 py-4 bg-sand text-navy hover:bg-[#c4b48f] transition-colors w-full sm:w-auto justify-center"
             >
-              <MessageSquare className="w-4 h-4" />
-              Ask Scout
+              <Tent className="w-4 h-4" />
+              Reserve a Sideline Suite
             </Link>
             <Link
               href="/team-booking"
@@ -121,6 +121,69 @@ export default function HomePage() {
           <span className="font-semibold">West Coast Showdown 2026</span>
           {' · '}Sunnyvale, CA{' · '}July 18–19
         </p>
+      </section>
+
+      {/* ── Sideline Suites intro ── */}
+      <section className="bg-[#0E1A2B] text-cream px-6 py-16">
+        <div className="max-w-5xl mx-auto">
+          <div className="flex flex-col lg:flex-row gap-12 items-center">
+            <div className="flex-1">
+              <p className="text-[#D6C6A5] font-semibold text-sm uppercase tracking-widest mb-3">
+                Sideline Suites
+              </p>
+              <h2 className="font-heading text-3xl md:text-4xl font-bold mb-5 leading-tight">
+                Introducing Sideline Suites
+              </h2>
+              <p className="text-[#a0b4c8] text-base leading-relaxed mb-6">
+                The sideline gear rental marketplace built for tournament families. Reserve a canopy,
+                chairs, and cooler — delivered to your field, set up before your first game, and
+                packed up when you leave.
+              </p>
+              <ul className="space-y-3 mb-8">
+                {[
+                  'Gear waiting at your field when you arrive',
+                  'Professional setup and teardown included',
+                  'Family kits from $85 · Team packages from $350',
+                ].map((item) => (
+                  <li key={item} className="flex items-center gap-3 text-sm text-[#c0d0e0]">
+                    <Check className="w-4 h-4 text-[#D6C6A5] shrink-0" />
+                    {item}
+                  </li>
+                ))}
+              </ul>
+              <Link
+                href="/t/west-coast-showdown-2026/gear"
+                className="inline-flex items-center gap-2 font-semibold rounded-full px-8 py-3.5 bg-[#D6C6A5] text-[#0E1A2B] hover:bg-[#c4b48f] transition-colors text-sm"
+              >
+                <Tent className="w-4 h-4" />
+                Browse Packages →
+              </Link>
+            </div>
+            <div className="flex-1 grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-1 xl:grid-cols-3 gap-4 w-full lg:max-w-sm xl:max-w-none">
+              {[
+                { label: 'Family Sideline Kit', price: '$85', desc: 'Chairs, umbrella, cooler' },
+                { label: 'Team Basecamp', price: '$350', desc: '10×10 canopy, 10 chairs, coolers, table', featured: true },
+                { label: 'Premium Team Suite', price: '$750', desc: 'Everything + snacks & priority setup' },
+              ].map((pkg) => (
+                <div
+                  key={pkg.label}
+                  className={`rounded-xl p-5 border text-center ${
+                    pkg.featured
+                      ? 'border-[#D6C6A5] bg-[#1a2d47]'
+                      : 'border-white/10 bg-white/5'
+                  }`}
+                >
+                  {pkg.featured && (
+                    <p className="text-[#D6C6A5] text-xs font-semibold uppercase tracking-wider mb-2">Most Popular</p>
+                  )}
+                  <p className="font-heading text-2xl font-bold text-cream">{pkg.price}</p>
+                  <p className="font-semibold text-cream text-sm mt-1">{pkg.label}</p>
+                  <p className="text-[#8090a0] text-xs mt-1.5 leading-snug">{pkg.desc}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
       </section>
 
       {/* ── Featured tournament ── */}
@@ -191,69 +254,6 @@ export default function HomePage() {
               </div>
             </CardContent>
           </Card>
-        </div>
-      </section>
-
-      {/* ── Sideline Suites intro ── */}
-      <section className="bg-[#0E1A2B] text-cream px-6 py-16">
-        <div className="max-w-5xl mx-auto">
-          <div className="flex flex-col lg:flex-row gap-12 items-center">
-            <div className="flex-1">
-              <p className="text-[#D6C6A5] font-semibold text-sm uppercase tracking-widest mb-3">
-                Sideline Suites
-              </p>
-              <h2 className="font-heading text-3xl md:text-4xl font-bold mb-5 leading-tight">
-                Introducing Sideline Suites
-              </h2>
-              <p className="text-[#a0b4c8] text-base leading-relaxed mb-6">
-                The sideline gear rental marketplace built for tournament families. Reserve a canopy,
-                chairs, and cooler — delivered to your field, set up before your first game, and
-                packed up when you leave.
-              </p>
-              <ul className="space-y-3 mb-8">
-                {[
-                  'Gear waiting at your field when you arrive',
-                  'Professional setup and teardown included',
-                  'Family kits from $85 · Team packages from $350',
-                ].map((item) => (
-                  <li key={item} className="flex items-center gap-3 text-sm text-[#c0d0e0]">
-                    <Check className="w-4 h-4 text-[#D6C6A5] shrink-0" />
-                    {item}
-                  </li>
-                ))}
-              </ul>
-              <Link
-                href="/t/west-coast-showdown-2026/gear"
-                className="inline-flex items-center gap-2 font-semibold rounded-full px-8 py-3.5 bg-[#D6C6A5] text-[#0E1A2B] hover:bg-[#c4b48f] transition-colors text-sm"
-              >
-                <Tent className="w-4 h-4" />
-                Browse Packages →
-              </Link>
-            </div>
-            <div className="flex-1 grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-1 xl:grid-cols-3 gap-4 w-full lg:max-w-sm xl:max-w-none">
-              {[
-                { label: 'Family Sideline Kit', price: '$85', desc: 'Chairs, umbrella, cooler' },
-                { label: 'Team Basecamp', price: '$350', desc: '10×10 canopy, 10 chairs, coolers, table', featured: true },
-                { label: 'Premium Team Suite', price: '$750', desc: 'Everything + snacks & priority setup' },
-              ].map((pkg) => (
-                <div
-                  key={pkg.label}
-                  className={`rounded-xl p-5 border text-center ${
-                    pkg.featured
-                      ? 'border-[#D6C6A5] bg-[#1a2d47]'
-                      : 'border-white/10 bg-white/5'
-                  }`}
-                >
-                  {pkg.featured && (
-                    <p className="text-[#D6C6A5] text-xs font-semibold uppercase tracking-wider mb-2">Most Popular</p>
-                  )}
-                  <p className="font-heading text-2xl font-bold text-cream">{pkg.price}</p>
-                  <p className="font-semibold text-cream text-sm mt-1">{pkg.label}</p>
-                  <p className="text-[#8090a0] text-xs mt-1.5 leading-snug">{pkg.desc}</p>
-                </div>
-              ))}
-            </div>
-          </div>
         </div>
       </section>
 

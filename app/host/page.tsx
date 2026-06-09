@@ -257,13 +257,13 @@ export default function HostPage() {
         <div className="absolute inset-0 opacity-5 bg-[radial-gradient(circle_at_30%_20%,#D6C6A5,transparent_60%),radial-gradient(circle_at_70%_80%,#D6C6A5,transparent_60%)]" />
         <div className="relative max-w-4xl mx-auto">
           <p className="text-sand font-semibold text-sm uppercase tracking-widest mb-6">
-            Sideline Suites · Provider Program
+            Join Sideline Suites
           </p>
           <h1 className="font-heading text-4xl md:text-6xl font-bold mb-6 leading-tight">
             Earn Money Renting Sideline Gear<br className="hidden md:block" /> at Youth Sports Tournaments
           </h1>
           <p className="text-steel text-lg md:text-xl max-w-2xl mx-auto mb-4">
-            Turn your canopy, chairs, and cooler into tournament income. We handle bookings, payments, and protection — you deliver and earn.
+            We&rsquo;re building a trusted local network of approved Providers who deliver clean, reliable sideline setups at youth sports tournaments. This isn&rsquo;t random gear rental — it&rsquo;s a premium service families count on.
           </p>
           <p className="text-sand/80 text-sm mb-10 max-w-lg mx-auto">
             We&rsquo;re currently accepting a limited number of Providers near tournament venues. Apply now to secure your spot for West Coast Showdown 2026.

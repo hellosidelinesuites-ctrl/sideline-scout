@@ -184,7 +184,7 @@ export default async function GearPage({ params }: { params: Promise<{ slug: str
                     </Link>
                   </Button>
                   <p className="text-xs text-[#555] text-center mt-2">
-                    Free cancellation up to 48 hours before the tournament
+                    No charge yet — we confirm availability within 24 hours.
                   </p>
                 </div>
               </CardContent>
@@ -199,15 +199,11 @@ export default async function GearPage({ params }: { params: Promise<{ slug: str
         <div className="flex flex-wrap gap-2">
           <div className="flex items-center gap-2 px-4 py-2 rounded-full border border-sand/50 bg-sand/10 text-sm text-navy font-medium">
             <Zap className="w-3.5 h-3.5 text-navy shrink-0" />
-            Setup Service <span className="text-[#555] font-normal">+${UPSELL_PRICES.setup_service}</span>
+            Priority Setup <span className="text-[#555] font-normal">+$40</span>
           </div>
           <div className="flex items-center gap-2 px-4 py-2 rounded-full border border-sand/50 bg-sand/10 text-sm text-navy font-medium">
             <Shield className="w-3.5 h-3.5 text-navy shrink-0" />
-            Gear Protection <span className="text-[#555] font-normal">+${UPSELL_PRICES.gear_protection}</span>
-          </div>
-          <div className="flex items-center gap-2 px-4 py-2 rounded-full border border-sand/50 bg-sand/10 text-sm text-navy font-medium">
-            <MapPin className="w-3.5 h-3.5 text-navy shrink-0" />
-            Placement Intel <span className="text-[#555] font-normal">+${UPSELL_PRICES.placement_intel}</span>
+            Gear Protection <span className="text-[#555] font-normal">+$10</span>
           </div>
         </div>
       </div>

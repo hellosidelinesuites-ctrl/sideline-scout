@@ -1,0 +1,270 @@
+import Link from 'next/link'
+import { Badge } from '@/components/ui/badge'
+import { Card, CardContent } from '@/components/ui/card'
+import { Button } from '@/components/ui/button'
+import {
+  Tent, Users, Star, Check, Truck, ArrowRight, Shield, Zap,
+} from 'lucide-react'
+
+const PACKAGES = [
+  {
+    id: 'family',
+    name: 'Family Sideline Kit',
+    price: 85,
+    badge: 'Family Pick',
+    bestFor: 'Families with 1–2 players',
+    includes: ['2 folding chairs', 'Shade umbrella', 'Cooler with ice'],
+    description: 'Everything a family needs for a comfortable tournament day. Set up and tear down handled by us.',
+    highlight: false,
+    Icon: Tent,
+  },
+  {
+    id: 'basecamp',
+    name: 'Team Basecamp',
+    price: 350,
+    badge: 'Most Popular',
+    bestFor: 'Teams of 10–15 players',
+    includes: ['10 folding chairs', '10×10 pop-up canopy', '2 large coolers', 'Folding table'],
+    description: 'A full sideline command center for your team. We handle logistics so coaches can focus on the game.',
+    highlight: true,
+    Icon: Users,
+  },
+  {
+    id: 'premium',
+    name: 'Premium Team Suite',
+    price: 750,
+    badge: 'Premium',
+    bestFor: 'Teams wanting a VIP experience',
+    includes: [
+      '10 folding chairs',
+      '10×10 pop-up canopy',
+      '2 large coolers',
+      'Folding table',
+      'Snacks & drinks',
+      'Priority setup at your field',
+    ],
+    description: 'Everything in Team Basecamp plus premium extras. Your sideline, sorted before you arrive.',
+    highlight: false,
+    Icon: Star,
+  },
+]
+
+const HOW_IT_WORKS = [
+  { step: '1', label: 'Choose your package', detail: 'Pick the setup that fits your family or team. No charge until we confirm.' },
+  { step: '2', label: 'We set it up at your field', detail: 'Gear is staged and ready before you arrive on game day.' },
+  { step: '3', label: 'Enjoy the game', detail: 'We handle pickup when the tournament ends. Just walk away.' },
+]
+
+const WHATS_INCLUDED = [
+  { Icon: Truck, title: 'Delivery to your field', body: 'We bring everything to your assigned field on tournament morning.' },
+  { Icon: Zap, title: 'Field-side setup', body: 'Canopy staked, chairs arranged, coolers stocked — ready before gates open.' },
+  { Icon: ArrowRight, title: 'End-of-day pickup', body: 'We pack up and clear out after the final whistle. Nothing left for you to haul.' },
+  { Icon: Check, title: 'Text confirmation', body: "You'll get a text when setup is complete and another when we've packed up." },
+]
+
+const FAQ = [
+  {
+    q: 'Is payment due now?',
+    a: 'No. When you submit a reservation request, we confirm availability first. You\'ll only be charged after we confirm your package.',
+  },
+  {
+    q: 'What if tents aren\'t allowed at the venue?',
+    a: 'We check venue rules before confirming every reservation. If shade structures aren\'t permitted, we\'ll let you know and adjust your package.',
+  },
+  {
+    q: 'What if the weather is bad?',
+    a: 'We monitor forecasts and will advise on setup adjustments — such as swapping a canopy for windbreaks or moving gear to a sheltered spot.',
+  },
+  {
+    q: 'Can I cancel?',
+    a: 'Yes. Cancel up to 48 hours before the tournament for a full refund. No questions asked.',
+  },
+]
+
+export default function SuitesPage() {
+  return (
+    <div className="flex flex-col min-h-screen bg-cream">
+
+      {/* Hero */}
+      <section className="bg-[#0E1A2B] text-cream px-6 pt-24 md:pt-32 pb-16 text-center">
+        <div className="max-w-3xl mx-auto">
+          <Badge className="mb-5 bg-[#D6C6A5] text-navy border-0 text-sm px-4 py-1">
+            West Coast Showdown 2026 · Now Booking
+          </Badge>
+          <h1 className="font-heading text-5xl md:text-6xl font-bold mb-6 leading-tight">
+            Tournament sideline setups, delivered.
+          </h1>
+          <p className="text-[#a0b4c8] text-lg md:text-xl max-w-2xl mx-auto mb-8 leading-relaxed">
+            Chairs, shade, coolers, team tables, and game-day essentials — set up at the field before
+            you arrive, packed up when you leave.
+          </p>
+          <Link
+            href="/t/west-coast-showdown-2026/gear"
+            className="inline-flex items-center gap-2 font-semibold rounded-full px-8 py-4 bg-[#D6C6A5] text-[#0E1A2B] hover:bg-[#c4b48f] transition-colors text-base"
+          >
+            <Tent className="w-4 h-4" />
+            Reserve a Setup
+          </Link>
+        </div>
+      </section>
+
+      {/* Packages */}
+      <section className="px-6 py-16">
+        <div className="max-w-5xl mx-auto">
+          <h2 className="font-heading text-3xl font-bold text-navy text-center mb-2">Choose your package</h2>
+          <p className="text-[#555] text-center mb-10">No charge until we confirm availability.</p>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 items-start">
+            {PACKAGES.map((pkg) => (
+              <Card
+                key={pkg.id}
+                className={`overflow-hidden transition-all flex flex-col ${
+                  pkg.highlight
+                    ? 'border-2 border-navy shadow-xl ring-0 md:scale-[1.02]'
+                    : 'border border-sand/40 hover:shadow-md ring-0'
+                }`}
+              >
+                <div className="bg-navy px-6 pt-8 pb-6 flex flex-col items-center gap-3 text-center">
+                  <div className="w-16 h-16 rounded-full bg-[#1a2d47] flex items-center justify-center shrink-0">
+                    <pkg.Icon className="w-8 h-8 text-[#D6C6A5]" />
+                  </div>
+                  <div>
+                    <Badge className="bg-[#D6C6A5] text-navy border-0 text-xs mb-2">{pkg.badge}</Badge>
+                    <p className="font-heading text-xl text-cream font-bold leading-tight">{pkg.name}</p>
+                    <p className="text-[#a0b0c0] text-xs mt-1">{pkg.bestFor}</p>
+                  </div>
+                </div>
+                <CardContent className="pt-6 pb-6 flex flex-col flex-1 gap-5 bg-white">
+                  <p className="text-sm text-[#555] leading-relaxed">{pkg.description}</p>
+                  <ul className="space-y-2">
+                    {pkg.includes.map((item) => (
+                      <li key={item} className="flex items-center gap-2 text-sm text-navy">
+                        <Check className="w-3.5 h-3.5 text-[#D6C6A5] shrink-0" />
+                        {item}
+                      </li>
+                    ))}
+                  </ul>
+                  <div className="mt-auto pt-2">
+                    <p className="font-heading text-3xl font-bold text-navy mb-1">
+                      ${pkg.price}
+                      <span className="text-sm font-normal text-[#555]">/weekend</span>
+                    </p>
+                    <Button
+                      asChild
+                      className="w-full bg-[#D6C6A5] text-[#0E1A2B] font-semibold rounded-full hover:bg-[#c4b48f] transition-colors mt-3"
+                      size="default"
+                    >
+                      <Link href={`/team-booking?type=gear&package=${pkg.id}`}>
+                        Reserve this package
+                      </Link>
+                    </Button>
+                    <p className="text-xs text-[#555] text-center mt-2">
+                      No charge yet — we confirm availability within 24 hours.
+                    </p>
+                  </div>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* How it works */}
+      <section className="bg-[#0E1A2B] text-cream px-6 py-16">
+        <div className="max-w-5xl mx-auto">
+          <h2 className="font-heading text-3xl font-bold text-center mb-2">How it works</h2>
+          <p className="text-[#a0b4c8] text-center mb-12">Three steps from signup to sideline.</p>
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 text-center">
+            {HOW_IT_WORKS.map((s, i) => (
+              <div key={s.step} className="flex flex-col items-center gap-3 relative">
+                <div className="w-10 h-10 rounded-full bg-[#D6C6A5] text-navy font-bold text-base flex items-center justify-center shrink-0">
+                  {s.step}
+                </div>
+                <p className="font-semibold text-cream text-base">{s.label}</p>
+                <p className="text-[#a0b4c8] text-sm leading-relaxed">{s.detail}</p>
+                {i < 2 && (
+                  <ArrowRight className="hidden sm:block absolute -right-4 top-3 w-4 h-4 text-[#D6C6A5]/50" />
+                )}
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* What's included in every package */}
+      <section className="bg-cream px-6 py-16">
+        <div className="max-w-5xl mx-auto">
+          <h2 className="font-heading text-3xl font-bold text-navy text-center mb-2">What&rsquo;s included in every package</h2>
+          <p className="text-[#555] text-center mb-10">Every Sideline Suites order includes the same core service.</p>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+            {WHATS_INCLUDED.map(({ Icon, title, body }) => (
+              <div key={title} className="flex items-start gap-4 bg-white rounded-2xl p-6 shadow-sm border border-border">
+                <div className="w-10 h-10 rounded-xl bg-navy/5 flex items-center justify-center shrink-0">
+                  <Icon className="w-5 h-5 text-navy" />
+                </div>
+                <div>
+                  <p className="font-semibold text-navy text-base mb-1">{title}</p>
+                  <p className="text-[#555] text-sm leading-relaxed">{body}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Add-ons */}
+      <section className="bg-sand/15 border-y border-sand/40 px-6 py-10">
+        <div className="max-w-5xl mx-auto">
+          <p className="text-xs font-semibold text-[#555] uppercase tracking-widest mb-4 text-center">Optional add-ons</p>
+          <div className="flex flex-wrap gap-3 justify-center">
+            <div className="flex items-center gap-2 px-4 py-2 rounded-full border border-sand/50 bg-white text-sm text-navy font-medium">
+              <Zap className="w-3.5 h-3.5 text-navy shrink-0" />
+              Priority Setup <span className="text-[#555] font-normal ml-1">+$40</span>
+            </div>
+            <div className="flex items-center gap-2 px-4 py-2 rounded-full border border-sand/50 bg-white text-sm text-navy font-medium">
+              <Shield className="w-3.5 h-3.5 text-navy shrink-0" />
+              Gear Protection <span className="text-[#555] font-normal ml-1">+$10</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* FAQ */}
+      <section className="bg-white px-6 py-16">
+        <div className="max-w-3xl mx-auto">
+          <h2 className="font-heading text-3xl font-bold text-navy text-center mb-10">Common questions</h2>
+          <div className="space-y-6">
+            {FAQ.map(({ q, a }) => (
+              <div key={q} className="border-b border-border pb-6 last:border-0 last:pb-0">
+                <p className="font-semibold text-navy text-base mb-2">{q}</p>
+                <p className="text-[#555] text-sm leading-relaxed">{a}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Become a Provider CTA */}
+      <section className="bg-navy text-cream px-6 py-16 text-center">
+        <div className="max-w-2xl mx-auto">
+          <p className="text-[#D6C6A5] font-semibold text-sm uppercase tracking-widest mb-3">For Gear Owners</p>
+          <h2 className="font-heading text-3xl font-bold mb-4">Earn by renting your sideline gear</h2>
+          <p className="text-[#a0b4c8] text-base leading-relaxed mb-8">
+            Join our network of approved Providers and earn 82% on every rental. We handle bookings,
+            payments, and protection — you deliver and earn.
+          </p>
+          <Button asChild size="lg" className="bg-[#D6C6A5] text-navy hover:bg-[#c4b48f] font-semibold rounded-full px-8">
+            <Link href="/host">Become a Provider</Link>
+          </Button>
+        </div>
+      </section>
+
+      <footer className="bg-navy border-t border-white/5 text-steel text-xs text-center py-5 px-6">
+        © {new Date().getFullYear()} Sideline Scout · Sideline Suites{' '}
+        <span className="mx-1">·</span>
+        <a href="mailto:hello@sidelinescout.co" className="hover:text-cream transition-colors">
+          hello@sidelinescout.co
+        </a>
+      </footer>
+    </div>
+  )
+}

@@ -8,47 +8,51 @@ import { Textarea } from '@/components/ui/textarea'
 import { Label } from '@/components/ui/label'
 import { Card, CardContent } from '@/components/ui/card'
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
-import { CheckCircle2, Hotel, ShoppingBag, Star } from 'lucide-react'
+import { CheckCircle2, ShoppingBag, Star, Hotel } from 'lucide-react'
 
 const OFFERS = [
   {
-    id: 'hotel',
-    icon: Hotel,
-    name: 'Team Hotel Help',
-    price: '$0',
-    tagline: 'Free coordination',
-    description: 'We coordinate the hotel block so your team can book together at the same property.',
-    includes: [
-      'Team-friendly hotel matched to your group size',
-      'Group rate coordination',
-      'Booking link sent to your full roster',
-    ],
-  },
-  {
     id: 'basecamp',
     icon: ShoppingBag,
-    name: 'Team Sideline Setup',
+    name: 'Team Basecamp',
     price: '$350',
     tagline: 'Most popular',
-    description: 'Team Basecamp delivered and set up at your assigned field before you arrive.',
+    description: 'Canopy, chairs, coolers, and a folding table — delivered and set up at your field before the opening whistle.',
     includes: [
-      '10 chairs, canopy, 2 coolers, folding table',
-      'Setup at your field before gates open',
-      'Pickup handled after the tournament ends',
+      '10×10 pop-up canopy',
+      '10 folding chairs',
+      '2 large coolers',
+      'Folding table',
+      'Setup before gates open',
+      'Pickup after the tournament',
     ],
     highlight: true,
   },
   {
-    id: 'concierge',
+    id: 'premium',
     icon: Star,
-    name: 'Full Weekend Concierge',
-    price: '$99',
+    name: 'Premium Team Suite',
+    price: '$750',
     tagline: 'White glove',
-    description: 'We handle everything — hotel coordination, gear delivery, and a weekend itinerary for your families.',
+    description: 'Everything in Team Basecamp plus snacks, drinks, and priority setup at your assigned field.',
     includes: [
-      'Everything in Hotel Help + Sideline Setup',
-      'Weekend itinerary sent to every family',
-      'Scout premium access for your team',
+      'Everything in Team Basecamp',
+      'Snacks & drinks for players',
+      'Priority setup at your field',
+      'End-of-day full breakdown',
+    ],
+  },
+  {
+    id: 'concierge',
+    icon: Hotel,
+    name: 'Full Weekend Concierge',
+    price: 'Contact us',
+    tagline: 'All-in',
+    description: 'Sideline Suites + hotel block coordination + a Scout briefing sent to every family on your roster.',
+    includes: [
+      'Sideline suite delivery and setup',
+      'Team hotel block coordination',
+      'Scout briefing for all families',
       'Priority support all weekend',
     ],
   },
@@ -66,7 +70,7 @@ function TeamBookingContent() {
 
   // Map gear page package IDs to offer IDs
   useEffect(() => {
-    const map: Record<string, string> = { family: 'hotel', basecamp: 'basecamp', premium: 'concierge' }
+    const map: Record<string, string> = { family: 'basecamp', basecamp: 'basecamp', premium: 'premium' }
     if (packageParam && map[packageParam]) setSelectedPackage(map[packageParam])
   }, [packageParam])
 
@@ -100,7 +104,7 @@ function TeamBookingContent() {
           <CheckCircle2 className="w-14 h-14 text-green-500 mx-auto mb-5" />
           <h2 className="font-heading text-3xl font-bold text-navy mb-3">Request received!</h2>
           <p className="text-[#555] text-base leading-relaxed">
-            We&rsquo;ll reach out within 24 hours to confirm your package and get the details sorted.
+            We&rsquo;ll reach out within 24 hours to confirm your setup and get the details sorted.
           </p>
         </div>
       </div>
@@ -111,12 +115,14 @@ function TeamBookingContent() {
     <div className="min-h-screen bg-cream">
       {/* Header */}
       <section className="bg-navy text-cream px-6 py-16 text-center">
-        <h1 className="font-heading text-4xl md:text-5xl font-bold mb-4 leading-tight">
-          Team managers, stop coordinating<br className="hidden sm:block" /> through 37 texts.
-        </h1>
-        <p className="text-steel text-lg max-w-xl mx-auto">
-          We handle the hotel block, gear delivery, and weekend logistics. You just show up.
-        </p>
+        <div className="max-w-3xl mx-auto">
+          <h1 className="font-heading text-4xl md:text-5xl font-bold mb-4 leading-tight">
+            Team managers, stop hauling<br className="hidden sm:block" /> the whole sideline.
+          </h1>
+          <p className="text-steel text-lg max-w-xl mx-auto">
+            One request. We handle chairs, shade, coolers, tables, and setup for your whole team.
+          </p>
+        </div>
       </section>
 
       <div className="max-w-4xl mx-auto px-4 py-12 space-y-10">
@@ -252,10 +258,10 @@ function TeamBookingContent() {
                 disabled={loading || !selectedPackage || !teamSize}
                 className="w-full bg-navy text-cream font-semibold rounded-full py-6 text-base hover:bg-[#1a2d47] transition-colors disabled:opacity-40"
               >
-                {loading ? 'Submitting…' : 'Request Team Package'}
+                {loading ? 'Submitting…' : 'Request Team Setup'}
               </Button>
               <p className="text-xs text-center text-[#555]">
-                We&rsquo;ll reach out within 24 hours to confirm your package.
+                No charge yet — we confirm availability within 24 hours.
               </p>
             </form>
           </CardContent>
