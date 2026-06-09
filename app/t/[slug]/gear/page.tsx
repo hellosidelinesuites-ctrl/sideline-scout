@@ -93,9 +93,9 @@ export default async function GearPage({ params }: { params: Promise<{ slug: str
   return (
     <div className="max-w-5xl mx-auto px-4 py-8">
       <div className="mb-6">
-        <h1 className="font-heading text-3xl font-bold text-navy">Gear Rentals</h1>
+        <h1 className="font-heading text-3xl font-bold text-navy">Sideline Suites</h1>
         <p className="text-[#555] mt-1">
-          Managed packages and local host listings for {tournament.name}.
+          Tournament sideline setups, delivered to your field. Canopies, chairs, coolers — ready before you arrive.
         </p>
       </div>
 
