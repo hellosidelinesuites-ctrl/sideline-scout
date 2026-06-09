@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { createServiceClient } from '@/lib/supabase/server'
 import { sendNotification } from '@/lib/notify'
+import { sendSMS } from '@/lib/sms'
 
 export async function POST(req: NextRequest) {
   const body = await req.json()
@@ -33,10 +34,13 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: 'Failed to subscribe' }, { status: 500 })
   }
 
-  await sendNotification('New Email Subscriber', {
-    'Email': email.toLowerCase().trim(),
-    'Tournament Slug': tournament_slug,
-  })
+  await Promise.all([
+    sendNotification('New Email Subscriber', {
+      'Email': email.toLowerCase().trim(),
+      'Tournament Slug': tournament_slug,
+    }),
+    sendSMS(`New subscriber: ${email.toLowerCase().trim()}`),
+  ])
 
   return NextResponse.json({ success: true })
 }

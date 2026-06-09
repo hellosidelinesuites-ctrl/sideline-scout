@@ -57,6 +57,7 @@ const OFFERS = [
 function TeamBookingContent() {
   const searchParams = useSearchParams()
   const packageParam = searchParams.get('package') ?? ''
+  const requestType = searchParams.get('type') ?? ''
 
   const [submitted, setSubmitted] = useState(false)
   const [loading, setLoading] = useState(false)
@@ -77,6 +78,7 @@ function TeamBookingContent() {
       ...Object.fromEntries(new FormData(form)),
       team_size: teamSize,
       package: selectedPackage,
+      request_type: requestType,
     }
 
     try {

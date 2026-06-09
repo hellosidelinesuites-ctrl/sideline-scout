@@ -2,11 +2,9 @@ import { createClient } from '@/lib/supabase/server'
 import { notFound } from 'next/navigation'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
-import { Button } from '@/components/ui/button'
-import { MapPin, Star, ExternalLink, Users, CheckCircle2 } from 'lucide-react'
+import { MapPin, Star, Users, CheckCircle2 } from 'lucide-react'
 import type { Hotel } from '@/types/database'
-
-const TIDES_URL = 'https://www.foratravel.com/advisor/eric-mcdearman'
+import HotelBookButton from '@/components/hotel-book-button'
 
 function getDriveMinutes(miles: number): number {
   return Math.round(Math.max(5, miles * 2.8))
@@ -136,16 +134,7 @@ export default async function HotelsPage({ params }: { params: Promise<{ slug: s
                   <p className="text-sm text-[#555] leading-relaxed">{hotel.notes}</p>
                 )}
 
-                <Button
-                  asChild
-                  className="w-full bg-[#D6C6A5] text-[#0E1A2B] font-semibold hover:bg-[#c4b48f] transition-colors rounded-full"
-                  size="sm"
-                >
-                  <a href={TIDES_URL} target="_blank" rel="noopener noreferrer">
-                    Book with Tides & Timbers
-                    <ExternalLink className="w-3.5 h-3.5 ml-1.5" />
-                  </a>
-                </Button>
+                <HotelBookButton hotelName={hotel.name} />
                 <p className="text-xs text-[#555] text-center leading-snug">
                   Rates vary by dates and availability. Final pricing confirmed at booking.
                 </p>
