@@ -84,15 +84,15 @@ export default function HomePage() {
     <div className="flex flex-col min-h-screen">
 
       {/* ── Hero ── */}
-      <section className="bg-[#0E1A2B] text-cream px-6 pt-16 md:pt-20 pb-8 md:pb-12 text-center">
-        <div className="max-w-3xl mx-auto">
+      <section className="bg-[#0E1A2B] text-cream px-6 pt-24 md:pt-32 pb-12 md:pb-16 text-center min-h-[500px] flex items-center">
+        <div className="max-w-3xl mx-auto w-full">
           <Badge className="mb-5 bg-sand text-navy border-0 text-sm px-4 py-1">
             Beta — First tournament live
           </Badge>
           <h1 className="font-heading text-5xl md:text-7xl font-bold mb-6 leading-tight">
             Tournament weekend.<br className="hidden sm:block" /> Locked in.
           </h1>
-          <p className="text-steel text-lg md:text-xl max-w-xl mx-auto mb-10 leading-relaxed">
+          <p className="text-steel text-lg md:text-xl max-w-xl mx-auto mb-8 leading-relaxed">
             Sideline Scout is the AI-powered travel concierge for youth sports families.
             Hotels, gear, food, parking — everything in one place.
           </p>
@@ -125,7 +125,7 @@ export default function HomePage() {
 
       {/* ── Featured tournament ── */}
       <section className="bg-cream px-6 py-16">
-        <div className="max-w-4xl mx-auto">
+        <div className="max-w-5xl mx-auto">
           <p className="text-steel text-sm font-medium uppercase tracking-widest mb-5">
             Featured Tournament
           </p>
@@ -195,18 +195,16 @@ export default function HomePage() {
       </section>
 
       {/* ── Gear standalone CTA ── */}
-      <section className="bg-sand/20 border-y border-sand/40 px-6 py-10">
-        <div className="max-w-4xl mx-auto flex flex-col sm:flex-row sm:items-center justify-between gap-6">
-          <div>
-            <h2 className="font-heading text-2xl font-bold text-navy mb-2">Just need a tent?</h2>
-            <p className="text-[#444] text-base leading-snug max-w-lg">
-              No hotel. No full package. Just show up and find your gear waiting at the field.<br />
-              <span className="font-semibold text-navy">Family Sideline Kit — $85/weekend.</span> Tent, chairs, cooler. Delivered and set up.
-            </p>
-          </div>
+      <section className="bg-sand/20 border-y border-sand/40 px-6 py-12 text-center">
+        <div className="max-w-5xl mx-auto">
+          <h2 className="font-heading text-2xl font-bold text-navy mb-3">Just need a tent?</h2>
+          <p className="text-[#444] text-base leading-snug mb-6 max-w-lg mx-auto">
+            No hotel. No full package. Just show up and find your gear waiting at the field.<br />
+            <span className="font-semibold text-navy">Family Sideline Kit — $85/weekend.</span> Tent, chairs, cooler. Delivered and set up.
+          </p>
           <Link
             href="/t/west-coast-showdown-2026/gear"
-            className="inline-flex items-center justify-center font-semibold rounded-full px-8 py-3.5 bg-sand text-navy hover:bg-[#c4b48f] transition-colors text-sm shrink-0 whitespace-nowrap"
+            className="inline-flex items-center justify-center font-semibold rounded-full px-8 py-3.5 bg-sand text-navy hover:bg-[#c4b48f] transition-colors text-sm w-full sm:w-auto"
           >
             Reserve a Setup →
           </Link>
@@ -215,7 +213,7 @@ export default function HomePage() {
 
       {/* ── Testimonials ── */}
       <section className="bg-white px-6 py-16">
-        <div className="max-w-4xl mx-auto">
+        <div className="max-w-5xl mx-auto">
           <h2 className="font-heading text-3xl font-bold text-navy text-center mb-2">
             What parents are saying
           </h2>
@@ -239,7 +237,7 @@ export default function HomePage() {
 
       {/* ── How it works ── */}
       <section className="bg-cream px-6 py-16">
-        <div className="max-w-4xl mx-auto">
+        <div className="max-w-5xl mx-auto">
           <h2 className="font-heading text-3xl font-bold text-navy text-center mb-2">
             How it works
           </h2>
@@ -263,7 +261,7 @@ export default function HomePage() {
 
       {/* ── Coming soon tournaments ── */}
       <section className="bg-white px-6 py-16">
-        <div className="max-w-4xl mx-auto">
+        <div className="max-w-5xl mx-auto">
           <h2 className="font-heading text-2xl font-bold text-navy mb-1">More tournaments coming</h2>
           <p className="text-[#555] text-sm mb-8">
             Sideline Scout is expanding sport by sport, venue by venue. Want your tournament added?{' '}
@@ -321,7 +319,7 @@ export default function HomePage() {
 
       {/* ── Footer CTAs ── */}
       <section className="bg-cream px-6 py-16">
-        <div className="max-w-4xl mx-auto flex flex-col sm:flex-row gap-4 justify-between items-center">
+        <div className="max-w-5xl mx-auto flex flex-col sm:flex-row gap-4 justify-between items-center">
           <div>
             <p className="font-heading text-lg font-semibold text-navy">Ready to list your gear?</p>
             <p className="text-[#555] text-sm mt-0.5">Join the Sideline Suites Provider program.</p>
