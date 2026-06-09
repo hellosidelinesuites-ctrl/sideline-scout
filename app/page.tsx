@@ -159,28 +159,13 @@ export default function HomePage() {
                 Browse Packages →
               </Link>
             </div>
-            <div className="flex-1 grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-1 xl:grid-cols-3 gap-4 w-full lg:max-w-sm xl:max-w-none">
-              {[
-                { label: 'Family Sideline Kit', price: '$85', desc: 'Chairs, umbrella, cooler' },
-                { label: 'Team Basecamp', price: '$350', desc: '10×10 canopy, 10 chairs, coolers, table', featured: true },
-                { label: 'Premium Team Suite', price: '$750', desc: 'Everything + snacks & priority setup' },
-              ].map((pkg) => (
-                <div
-                  key={pkg.label}
-                  className={`rounded-xl p-5 border text-center ${
-                    pkg.featured
-                      ? 'border-[#D6C6A5] bg-[#1a2d47]'
-                      : 'border-white/10 bg-white/5'
-                  }`}
-                >
-                  {pkg.featured && (
-                    <p className="text-[#D6C6A5] text-xs font-semibold uppercase tracking-wider mb-2">Most Popular</p>
-                  )}
-                  <p className="font-heading text-2xl font-bold text-cream">{pkg.price}</p>
-                  <p className="font-semibold text-cream text-sm mt-1">{pkg.label}</p>
-                  <p className="text-[#8090a0] text-xs mt-1.5 leading-snug">{pkg.desc}</p>
-                </div>
-              ))}
+            <div className="flex-1 lg:self-stretch">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src="/images/sideline-suites-4.png"
+                alt="Sideline Suites team setup at a tournament"
+                className="w-full h-full min-h-[300px] object-cover rounded-2xl"
+              />
             </div>
           </div>
         </div>
@@ -258,17 +243,22 @@ export default function HomePage() {
       </section>
 
       {/* ── Gear standalone CTA ── */}
-      <section className="bg-sand/20 border-y border-sand/40 px-6 py-12 text-center">
-        <div className="max-w-5xl mx-auto">
-          <h2 className="font-heading text-2xl font-bold text-navy mb-1">Just need a tent?</h2>
+      <section className="relative overflow-hidden border-y border-[#0E1A2B]/20 px-6 py-16 text-center">
+        <div
+          className="absolute inset-0 bg-cover bg-center"
+          style={{ backgroundImage: 'url(/images/sideline-suites-2.png)' }}
+        />
+        <div className="absolute inset-0 bg-[#0E1A2B]/60" />
+        <div className="relative z-10 max-w-5xl mx-auto">
+          <h2 className="font-heading text-2xl font-bold text-cream mb-1">Just need a tent?</h2>
           <p className="text-[#D6C6A5] text-sm font-medium mb-3">by Sideline Suites</p>
-          <p className="text-[#444] text-base leading-snug mb-6 max-w-lg mx-auto">
+          <p className="text-cream/80 text-base leading-snug mb-6 max-w-lg mx-auto">
             No hotel. No full package. Just show up and find your gear waiting at the field.<br />
-            <span className="font-semibold text-navy">Family Sideline Kit — $85/weekend.</span> Tent, chairs, cooler. Delivered and set up.
+            <span className="font-semibold text-cream">Family Sideline Kit — $85/weekend.</span> Tent, chairs, cooler. Delivered and set up.
           </p>
           <Link
             href="/t/west-coast-showdown-2026/gear"
-            className="inline-flex items-center justify-center font-semibold rounded-full px-8 py-3.5 bg-sand text-navy hover:bg-[#c4b48f] transition-colors text-sm w-full sm:w-auto"
+            className="inline-flex items-center justify-center font-semibold rounded-full px-8 py-3.5 bg-[#D6C6A5] text-[#0E1A2B] hover:bg-[#c4b48f] transition-colors text-sm w-full sm:w-auto"
           >
             Reserve a Setup →
           </Link>

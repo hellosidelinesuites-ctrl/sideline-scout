@@ -50,6 +50,7 @@ const PACKAGES = [
     description: 'A full sideline command center for your team. We handle logistics so coaches can focus on the game.',
     highlight: true,
     Icon: Users,
+    headerImage: '/images/sideline-suites-3.png',
   },
   {
     id: 'premium',
@@ -146,17 +147,31 @@ export default async function GearPage({ params }: { params: Promise<{ slug: str
                   : 'border border-sand/40 hover:shadow-md ring-0'
               }`}
             >
-              {/* Navy header with icon + name + badge */}
-              <div className="bg-navy px-6 pt-8 pb-6 flex flex-col items-center gap-3 text-center">
-                <div className="w-16 h-16 rounded-full bg-[#1a2d47] flex items-center justify-center shrink-0">
-                  <pkg.Icon className="w-8 h-8 text-[#D6C6A5]" />
+              {/* Card header — photo for Team Basecamp, icon circle for others */}
+              {'headerImage' in pkg && pkg.headerImage ? (
+                <div className="relative overflow-hidden">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img src={pkg.headerImage} alt={pkg.name} className="w-full h-[180px] object-cover" />
+                  <div className="absolute inset-0 bg-navy/60 flex flex-col items-end justify-end gap-1 pb-4 px-4 text-center">
+                    <div className="w-full text-center">
+                      <Badge className="bg-[#D6C6A5] text-navy border-0 text-xs mb-1">{pkg.badge}</Badge>
+                      <CardTitle className="font-heading text-xl text-cream leading-tight">{pkg.name}</CardTitle>
+                      <p className="text-[#d0e0f0] text-xs mt-0.5">{pkg.bestFor}</p>
+                    </div>
+                  </div>
                 </div>
-                <div>
-                  <Badge className="bg-[#D6C6A5] text-navy border-0 text-xs mb-2">{pkg.badge}</Badge>
-                  <CardTitle className="font-heading text-xl text-cream leading-tight">{pkg.name}</CardTitle>
-                  <p className="text-[#a0b0c0] text-xs mt-1">{pkg.bestFor}</p>
+              ) : (
+                <div className="bg-navy px-6 pt-8 pb-6 flex flex-col items-center gap-3 text-center">
+                  <div className="w-16 h-16 rounded-full bg-[#1a2d47] flex items-center justify-center shrink-0">
+                    <pkg.Icon className="w-8 h-8 text-[#D6C6A5]" />
+                  </div>
+                  <div>
+                    <Badge className="bg-[#D6C6A5] text-navy border-0 text-xs mb-2">{pkg.badge}</Badge>
+                    <CardTitle className="font-heading text-xl text-cream leading-tight">{pkg.name}</CardTitle>
+                    <p className="text-[#a0b0c0] text-xs mt-1">{pkg.bestFor}</p>
+                  </div>
                 </div>
-              </div>
+              )}
 
               {/* White body */}
               <CardContent className="pt-6 pb-6 flex flex-col flex-1 gap-5 bg-white">

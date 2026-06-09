@@ -28,6 +28,7 @@ const PACKAGES = [
     description: 'A full sideline command center for your team. We handle logistics so coaches can focus on the game.',
     highlight: true,
     Icon: Users,
+    headerImage: '/images/sideline-suites-3.png',
   },
   {
     id: 'premium',
@@ -86,8 +87,13 @@ export default function SuitesPage() {
     <div className="flex flex-col min-h-screen bg-cream">
 
       {/* Hero */}
-      <section className="bg-[#0E1A2B] text-cream px-6 pt-24 md:pt-32 pb-16 text-center">
-        <div className="max-w-3xl mx-auto">
+      <section className="relative bg-[#0E1A2B] text-cream px-6 pt-24 md:pt-32 pb-16 text-center overflow-hidden">
+        <div
+          className="absolute inset-0 bg-cover bg-center"
+          style={{ backgroundImage: 'url(/images/sideline-suites-1.png)' }}
+        />
+        <div className="absolute inset-0 bg-[#0E1A2B]/65" />
+        <div className="relative z-10 max-w-3xl mx-auto">
           <Badge className="mb-5 bg-[#D6C6A5] text-navy border-0 text-sm px-4 py-1">
             West Coast Showdown 2026 · Now Booking
           </Badge>
@@ -123,16 +129,28 @@ export default function SuitesPage() {
                     : 'border border-sand/40 hover:shadow-md ring-0'
                 }`}
               >
-                <div className="bg-navy px-6 pt-8 pb-6 flex flex-col items-center gap-3 text-center">
-                  <div className="w-16 h-16 rounded-full bg-[#1a2d47] flex items-center justify-center shrink-0">
-                    <pkg.Icon className="w-8 h-8 text-[#D6C6A5]" />
+                {'headerImage' in pkg && pkg.headerImage ? (
+                  <div className="relative overflow-hidden">
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img src={pkg.headerImage as string} alt={pkg.name} className="w-full h-[180px] object-cover" />
+                    <div className="absolute inset-0 bg-navy/60 flex flex-col justify-end pb-4 px-4 text-center">
+                      <Badge className="bg-[#D6C6A5] text-navy border-0 text-xs mb-1 self-center">{pkg.badge}</Badge>
+                      <p className="font-heading text-xl text-cream font-bold leading-tight">{pkg.name}</p>
+                      <p className="text-[#d0e0f0] text-xs mt-0.5">{pkg.bestFor}</p>
+                    </div>
                   </div>
-                  <div>
-                    <Badge className="bg-[#D6C6A5] text-navy border-0 text-xs mb-2">{pkg.badge}</Badge>
-                    <p className="font-heading text-xl text-cream font-bold leading-tight">{pkg.name}</p>
-                    <p className="text-[#a0b0c0] text-xs mt-1">{pkg.bestFor}</p>
+                ) : (
+                  <div className="bg-navy px-6 pt-8 pb-6 flex flex-col items-center gap-3 text-center">
+                    <div className="w-16 h-16 rounded-full bg-[#1a2d47] flex items-center justify-center shrink-0">
+                      <pkg.Icon className="w-8 h-8 text-[#D6C6A5]" />
+                    </div>
+                    <div>
+                      <Badge className="bg-[#D6C6A5] text-navy border-0 text-xs mb-2">{pkg.badge}</Badge>
+                      <p className="font-heading text-xl text-cream font-bold leading-tight">{pkg.name}</p>
+                      <p className="text-[#a0b0c0] text-xs mt-1">{pkg.bestFor}</p>
+                    </div>
                   </div>
-                </div>
+                )}
                 <CardContent className="pt-6 pb-6 flex flex-col flex-1 gap-5 bg-white">
                   <p className="text-sm text-[#555] leading-relaxed">{pkg.description}</p>
                   <ul className="space-y-2">

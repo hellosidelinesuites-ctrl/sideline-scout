@@ -6,7 +6,11 @@
       "Bash(npx shadcn@latest init --defaults -y)",
       "Bash(npx shadcn@latest:*)",
       "Bash(npm run:*)",
-      "Bash(npx tsc:*)"
+      "Bash(npx tsc:*)",
+      "Bash(cp \"/Users/erinmcdearman/Downloads/ChatGPT Image Jun 8, 2026 at 10_29_17 PM \\(1\\).png\" /Users/erinmcdearman/sideline-scout/public/images/sideline-suites-1.png)",
+      "Bash(cp \"/Users/erinmcdearman/Downloads/ChatGPT Image Jun 8, 2026 at 10_29_17 PM \\(2\\).png\" /Users/erinmcdearman/sideline-scout/public/images/sideline-suites-2.png)",
+      "Bash(cp \"/Users/erinmcdearman/Downloads/ChatGPT Image Jun 8, 2026 at 10_29_17 PM \\(3\\).png\" /Users/erinmcdearman/sideline-scout/public/images/sideline-suites-3.png)",
+      "Bash(cp \"/Users/erinmcdearman/Downloads/ChatGPT Image Jun 8, 2026 at 10_29_17 PM \\(4\\).png\" /Users/erinmcdearman/sideline-scout/public/images/sideline-suites-4.png)"
     ]
   }
 }
