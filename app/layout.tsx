@@ -17,12 +17,12 @@ const playfair = Playfair_Display({
 })
 
 export const metadata: Metadata = {
-  title: 'Sideline Scout — Tournament Travel Concierge',
+  title: 'Sideline Scout — Tournament Weekend. Locked In.',
   description:
     'AI-powered travel guide for youth sports tournament families. Hotels, gear, food, parking, and more — all in one place.',
   openGraph: {
-    title: 'Sideline Scout',
-    description: 'Your tournament weekend, sorted.',
+    title: 'Sideline Scout — Tournament Weekend. Locked In.',
+    description: 'Tournament weekend. Locked in.',
     siteName: 'Sideline Scout',
   },
 }

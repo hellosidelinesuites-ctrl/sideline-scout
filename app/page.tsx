@@ -89,12 +89,9 @@ export default function HomePage() {
           <Badge className="mb-5 bg-sand text-navy border-0 text-sm px-4 py-1">
             Beta — First tournament live
           </Badge>
-          <h1 className="font-heading text-5xl md:text-7xl font-bold mb-4 leading-tight">
-            Your tournament<br className="hidden sm:block" /> weekend, sorted.
+          <h1 className="font-heading text-5xl md:text-7xl font-bold mb-6 leading-tight">
+            Tournament weekend.<br className="hidden sm:block" /> Locked in.
           </h1>
-          <p className="font-['Playfair_Display'] text-[#D6C6A5] text-lg md:text-xl italic mb-4">
-            Tournament weekend. Locked in.
-          </p>
           <p className="text-steel text-lg md:text-xl max-w-xl mx-auto mb-10 leading-relaxed">
             Sideline Scout is the AI-powered travel concierge for youth sports families.
             Hotels, gear, food, parking — everything in one place.
