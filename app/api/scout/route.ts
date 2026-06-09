@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { createClient } from '@/lib/supabase/server'
+import { createServiceClient } from '@/lib/supabase/server'
 import { getAnthropicClient, SCOUT_MODEL, SCOUT_SYSTEM_PROMPT, detectIntent } from '@/lib/anthropic'
 
 export async function POST(req: NextRequest) {
@@ -10,7 +10,7 @@ export async function POST(req: NextRequest) {
   }
 
   const start = Date.now()
-  const supabase = await createClient()
+  const supabase = await createServiceClient()
 
   // Load tournament
   const { data: tournament } = await supabase

@@ -1,11 +1,11 @@
-import { createClient } from '@/lib/supabase/server'
+import { createServiceClient } from '@/lib/supabase/server'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
 import TipsPanel from '@/components/admin/tips-panel'
 
 export default async function AdminPage() {
-  const supabase = await createClient()
+  const supabase = await createServiceClient()
 
   const [
     { count: tournamentCount },
