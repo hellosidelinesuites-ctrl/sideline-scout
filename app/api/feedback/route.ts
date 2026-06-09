@@ -1,12 +1,12 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { createClient } from '@/lib/supabase/server'
+import { createServiceClient } from '@/lib/supabase/server'
 
 // GET /api/feedback?slug=... — returns approved tip count for a tournament
 export async function GET(req: NextRequest) {
   const slug = req.nextUrl.searchParams.get('slug')
   if (!slug) return NextResponse.json({ count: 0 })
 
-  const supabase = await createClient()
+  const supabase = await createServiceClient()
 
   const { data: tournament } = await supabase
     .from('tournaments')
@@ -29,29 +29,29 @@ export async function GET(req: NextRequest) {
 export async function POST(req: NextRequest) {
   const { tournament_slug, tip, category, submitter_name } = await req.json()
 
-  if (!tip) {
+  if (!tip || !tip.trim()) {
     return NextResponse.json({ error: 'Tip is required' }, { status: 400 })
   }
 
-  const supabase = await createClient()
+  const supabase = await createServiceClient()
 
-  // Look up tournament by name or slug
-  const { data: tournament } = await supabase
-    .from('tournaments')
-    .select('id')
-    .or(`slug.ilike.%${tournament_slug}%,name.ilike.%${tournament_slug}%`)
-    .limit(1)
-    .single()
-
-  if (!tournament) {
-    return NextResponse.json({ error: 'Tournament not found' }, { status: 404 })
+  // Try to match tournament — don't fail if not found, store tip without tournament_id
+  let tournament_id: string | null = null
+  if (tournament_slug?.trim()) {
+    const { data: tournament } = await supabase
+      .from('tournaments')
+      .select('id')
+      .or(`slug.ilike.%${tournament_slug.trim()}%,name.ilike.%${tournament_slug.trim()}%`)
+      .limit(1)
+      .single()
+    tournament_id = tournament?.id ?? null
   }
 
   const { error } = await supabase.from('parent_tips').insert({
-    tournament_id: tournament.id,
-    tip,
+    tournament_id,
+    tip: tip.trim(),
     category: category || null,
-    submitter_name: submitter_name || null,
+    submitter_name: submitter_name?.trim() || null,
     status: 'pending',
   })
 

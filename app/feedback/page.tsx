@@ -23,6 +23,7 @@ const CATEGORIES = [
 export default function FeedbackPage() {
   const [submitted, setSubmitted] = useState(false)
   const [loading, setLoading] = useState(false)
+  const [error, setError] = useState<string | null>(null)
   const [category, setCategory] = useState<string>('')
   const [tipCount, setTipCount] = useState<number | null>(null)
   const [tournamentSlug, setTournamentSlug] = useState('west-coast-showdown-2026')
@@ -37,6 +38,7 @@ export default function FeedbackPage() {
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault()
     setLoading(true)
+    setError(null)
     const form = e.currentTarget
     const data = { ...Object.fromEntries(new FormData(form)), category }
 
@@ -46,7 +48,14 @@ export default function FeedbackPage() {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(data),
       })
-      if (res.ok) setSubmitted(true)
+      const json = await res.json()
+      if (res.ok && json.success) {
+        setSubmitted(true)
+      } else {
+        setError(json.error ?? 'Something went wrong. Please try again.')
+      }
+    } catch {
+      setError('Network error — please check your connection and try again.')
     } finally {
       setLoading(false)
     }
@@ -134,6 +143,11 @@ export default function FeedbackPage() {
                   <Label htmlFor="submitter_name">Your Name (optional)</Label>
                   <Input id="submitter_name" name="submitter_name" placeholder="Alex P." />
                 </div>
+                {error && (
+                  <p className="text-sm text-red-600 bg-red-50 border border-red-200 rounded-lg px-4 py-2.5">
+                    {error}
+                  </p>
+                )}
                 <Button
                   type="submit"
                   disabled={loading}
