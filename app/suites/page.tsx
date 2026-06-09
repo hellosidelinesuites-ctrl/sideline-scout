@@ -4,7 +4,7 @@ import { Card, CardContent } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
 import {
   Tent, Users, Star, Check, Truck, ArrowRight, Shield, Zap,
-  Cloud, Map, Utensils, MessageSquare,
+  Cloud, Map, Utensils, MessageSquare, Hotel,
 } from 'lucide-react'
 
 const PACKAGES = [
@@ -15,18 +15,18 @@ const PACKAGES = [
     badge: 'Family Pick',
     bestFor: 'Families with 1–2 players',
     includes: ['2 folding chairs', 'Shade umbrella', 'Cooler with ice'],
-    description: 'Everything a family needs for a comfortable tournament day. Set up and tear down handled by us.',
+    description: 'Everything a family needs for a comfortable tournament day. Delivered to the venue. Add Field Setup to have it ready at your spot.',
     highlight: false,
     Icon: Tent,
   },
   {
     id: 'basecamp',
     name: 'Team Basecamp',
-    price: 350,
+    price: 195,
     badge: 'Most Popular',
     bestFor: 'Teams of 10–15 players',
     includes: ['10 folding chairs', '10×10 pop-up canopy', '2 large coolers', 'Folding table'],
-    description: 'A full sideline command center for your team. We handle logistics so coaches can focus on the game.',
+    description: 'A full sideline command center for your team. Delivered to the venue. Add Field Setup and your team arrives to a ready sideline.',
     highlight: true,
     Icon: Users,
     headerImage: '/images/sideline-suites-3.png',
@@ -34,7 +34,7 @@ const PACKAGES = [
   {
     id: 'premium',
     name: 'Premium Team Suite',
-    price: 750,
+    price: 395,
     badge: 'Premium',
     bestFor: 'Teams wanting a VIP experience',
     includes: [
@@ -45,7 +45,7 @@ const PACKAGES = [
       'Snacks & drinks',
       'Priority setup at your field',
     ],
-    description: 'Everything in Team Basecamp plus premium extras. Your sideline, sorted before you arrive.',
+    description: 'Everything in Team Basecamp plus premium extras. Your sideline, sorted before you arrive. Includes priority field setup — we handle everything.',
     highlight: false,
     Icon: Star,
   },
@@ -284,14 +284,29 @@ export default function SuitesPage() {
       <section className="bg-sand/15 border-y border-sand/40 px-6 py-10">
         <div className="max-w-5xl mx-auto">
           <p className="text-xs font-semibold text-[#555] uppercase tracking-widest mb-4 text-center">Optional add-ons</p>
-          <div className="flex flex-wrap gap-3 justify-center">
-            <div className="flex items-center gap-2 px-4 py-2 rounded-full border border-sand/50 bg-white text-sm text-navy font-medium">
-              <Zap className="w-3.5 h-3.5 text-navy shrink-0" />
-              Priority Setup <span className="text-[#555] font-normal ml-1">+$40</span>
+          <div className="max-w-xl mx-auto flex flex-col gap-2">
+            <div className="flex items-start gap-3 px-4 py-3 rounded-xl border border-sand/50 bg-white text-sm text-navy">
+              <Zap className="w-3.5 h-3.5 text-navy shrink-0 mt-0.5" />
+              <div>
+                <span className="font-medium">Field Setup</span>
+                <span className="text-[#555] font-normal"> +$40</span>
+                <span className="text-[#555]"> — We carry gear to your field and set up before you arrive.</span>
+              </div>
             </div>
-            <div className="flex items-center gap-2 px-4 py-2 rounded-full border border-sand/50 bg-white text-sm text-navy font-medium">
-              <Shield className="w-3.5 h-3.5 text-navy shrink-0" />
-              Gear Protection <span className="text-[#555] font-normal ml-1">+$10</span>
+            <div className="flex items-start gap-3 px-4 py-3 rounded-xl border border-sand/50 bg-white text-sm text-navy">
+              <Hotel className="w-3.5 h-3.5 text-navy shrink-0 mt-0.5" />
+              <div>
+                <span className="font-medium">Hotel Delivery</span>
+                <span className="text-[#555] font-normal"> +$25</span>
+                <span className="text-[#555]"> — Gear delivered to your hotel the night before.</span>
+              </div>
+            </div>
+            <div className="flex items-start gap-3 px-4 py-3 rounded-xl border border-sand/50 bg-white text-sm text-navy">
+              <Shield className="w-3.5 h-3.5 text-navy shrink-0 mt-0.5" />
+              <div>
+                <span className="font-medium">Gear Protection</span>
+                <span className="text-[#555] font-normal"> +$10</span>
+              </div>
             </div>
           </div>
         </div>

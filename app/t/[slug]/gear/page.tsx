@@ -36,18 +36,18 @@ const PACKAGES = [
     badge: 'Family Pick',
     bestFor: 'Families with 1–2 players',
     includes: ['2 folding chairs', 'Shade umbrella', 'Cooler with ice'],
-    description: 'Everything a family needs for a comfortable tournament day. Set up and tear down handled by us.',
+    description: 'Everything a family needs for a comfortable tournament day. Delivered to the venue. Add Field Setup to have it ready at your spot.',
     highlight: false,
     Icon: Tent,
   },
   {
     id: 'basecamp',
     name: 'Team Basecamp',
-    price: 350,
+    price: 195,
     badge: 'Most Popular',
     bestFor: 'Teams of 10–15 players',
     includes: ['10 folding chairs', '10×10 pop-up canopy', '2 large coolers', 'Folding table'],
-    description: 'A full sideline command center for your team. We handle logistics so coaches can focus on the game.',
+    description: 'A full sideline command center for your team. Delivered to the venue. Add Field Setup and your team arrives to a ready sideline.',
     highlight: true,
     Icon: Users,
     headerImage: '/images/sideline-suites-3.png',
@@ -55,7 +55,7 @@ const PACKAGES = [
   {
     id: 'premium',
     name: 'Premium Team Suite',
-    price: 750,
+    price: 395,
     badge: 'Premium',
     bestFor: 'Teams wanting a VIP experience',
     includes: [
@@ -66,7 +66,7 @@ const PACKAGES = [
       'Snacks & drinks',
       'Priority setup at your field',
     ],
-    description: 'Everything in Team Basecamp plus premium extras. Your sideline, sorted before you arrive.',
+    description: 'Everything in Team Basecamp plus premium extras. Your sideline, sorted before you arrive. Includes priority field setup — we handle everything.',
     highlight: false,
     Icon: Star,
   },
@@ -127,7 +127,7 @@ export default async function GearPage({ params }: { params: Promise<{ slug: str
       <div className="flex items-center justify-center gap-2 bg-navy/5 border border-navy/10 rounded-lg px-4 py-2.5 mb-6">
         <Truck className="w-4 h-4 text-navy shrink-0" />
         <p className="text-sm font-medium text-navy">
-          All packages include delivery to your field and pickup after the tournament.
+          All packages include delivery to the venue and end-of-day pickup.
         </p>
       </div>
 
@@ -211,14 +211,29 @@ export default async function GearPage({ params }: { params: Promise<{ slug: str
       {/* ── Add-on chips ── */}
       <div className="mb-10">
         <p className="text-xs font-semibold text-[#555] uppercase tracking-widest mb-3">Add-ons available at checkout</p>
-        <div className="flex flex-wrap gap-2">
-          <div className="flex items-center gap-2 px-4 py-2 rounded-full border border-sand/50 bg-sand/10 text-sm text-navy font-medium">
-            <Zap className="w-3.5 h-3.5 text-navy shrink-0" />
-            Priority Setup <span className="text-[#555] font-normal">+$40</span>
+        <div className="flex flex-col gap-2">
+          <div className="flex items-start gap-3 px-4 py-3 rounded-xl border border-sand/50 bg-sand/10 text-sm text-navy">
+            <Zap className="w-3.5 h-3.5 text-navy shrink-0 mt-0.5" />
+            <div>
+              <span className="font-medium">Field Setup</span>
+              <span className="text-[#555] font-normal"> +$40</span>
+              <span className="text-[#555]"> — We carry gear to your field and set up before you arrive.</span>
+            </div>
           </div>
-          <div className="flex items-center gap-2 px-4 py-2 rounded-full border border-sand/50 bg-sand/10 text-sm text-navy font-medium">
-            <Shield className="w-3.5 h-3.5 text-navy shrink-0" />
-            Gear Protection <span className="text-[#555] font-normal">+$10</span>
+          <div className="flex items-start gap-3 px-4 py-3 rounded-xl border border-sand/50 bg-sand/10 text-sm text-navy">
+            <MapPin className="w-3.5 h-3.5 text-navy shrink-0 mt-0.5" />
+            <div>
+              <span className="font-medium">Hotel Delivery</span>
+              <span className="text-[#555] font-normal"> +$25</span>
+              <span className="text-[#555]"> — Gear delivered to your hotel the night before.</span>
+            </div>
+          </div>
+          <div className="flex items-start gap-3 px-4 py-3 rounded-xl border border-sand/50 bg-sand/10 text-sm text-navy">
+            <Shield className="w-3.5 h-3.5 text-navy shrink-0 mt-0.5" />
+            <div>
+              <span className="font-medium">Gear Protection</span>
+              <span className="text-[#555] font-normal"> +$10</span>
+            </div>
           </div>
         </div>
       </div>

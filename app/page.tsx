@@ -90,7 +90,7 @@ export default function HomePage() {
             Beta — First tournament live
           </Badge>
           <h1 className="font-heading text-5xl md:text-7xl font-bold mb-6 leading-tight">
-            Your team&rsquo;s sideline, sorted.
+            Tournament weekend.<br className="hidden sm:block" /> Locked in.
           </h1>
           <p className="text-steel text-lg md:text-xl max-w-xl mx-auto mb-8 leading-relaxed">
             Sideline Suites delivers canopies, chairs, coolers, and team tables directly to your field.
