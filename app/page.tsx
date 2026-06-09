@@ -188,12 +188,31 @@ export default function HomePage() {
                   </div>
                   <div>
                     <p className="font-semibold text-navy text-sm">Gear Rentals</p>
-                    <p className="text-xs text-[#555]">Tents, chairs & more</p>
+                    <p className="text-xs text-[#555]">Reserve a tent from $85</p>
                   </div>
                 </Link>
               </div>
             </CardContent>
           </Card>
+        </div>
+      </section>
+
+      {/* ── Gear standalone CTA ── */}
+      <section className="bg-sand/20 border-y border-sand/40 px-6 py-10">
+        <div className="max-w-4xl mx-auto flex flex-col sm:flex-row sm:items-center justify-between gap-6">
+          <div>
+            <h2 className="font-heading text-2xl font-bold text-navy mb-2">Just need a tent?</h2>
+            <p className="text-[#444] text-base leading-snug max-w-lg">
+              No hotel. No full package. Just show up and find your gear waiting at the field.<br />
+              <span className="font-semibold text-navy">Family Sideline Kit — $85/weekend.</span> Tent, chairs, cooler. Delivered and set up.
+            </p>
+          </div>
+          <Link
+            href="/t/west-coast-showdown-2026/gear"
+            className="inline-flex items-center justify-center font-semibold rounded-full px-8 py-3.5 bg-sand text-navy hover:bg-[#c4b48f] transition-colors text-sm shrink-0 whitespace-nowrap"
+          >
+            Reserve a Setup →
+          </Link>
         </div>
       </section>
 
