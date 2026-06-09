@@ -137,6 +137,22 @@ export async function POST(req: NextRequest) {
     }
   }
 
+  // Always include approved parent tips
+  const { data: parentTips } = await supabase
+    .from('parent_tips')
+    .select('tip, category')
+    .eq('tournament_id', tournament.id)
+    .eq('status', 'approved')
+    .order('created_at', { ascending: false })
+    .limit(20)
+
+  const tipCount = parentTips?.length ?? 0
+  if (tipCount > 0) {
+    contextParts.push('\nParent Tips (verified by Sideline Scout):\n' + parentTips!.map(t =>
+      `- ${t.category ? '[' + t.category + '] ' : ''}${t.tip}`
+    ).join('\n'))
+  }
+
   const contextBlock = contextParts.join('\n')
 
   // Build messages for Claude
@@ -168,7 +184,7 @@ export async function POST(req: NextRequest) {
       latency_ms: latency,
     }).then(() => {})
 
-    return NextResponse.json({ answer, intent })
+    return NextResponse.json({ answer, intent, tipCount })
   } catch (err) {
     console.error('Scout API error:', err)
     return NextResponse.json({ error: 'Scout unavailable' }, { status: 500 })

@@ -11,6 +11,7 @@ import { cn } from '@/lib/utils'
 interface Message {
   role: 'user' | 'assistant'
   content: string
+  tipCount?: number
 }
 
 const QUICK_QUESTIONS = [
@@ -81,7 +82,7 @@ export default function ScoutPage({
       if (!res.ok) throw new Error('Scout error')
 
       const data = await res.json()
-      setMessages((prev) => [...prev, { role: 'assistant', content: data.answer }])
+      setMessages((prev) => [...prev, { role: 'assistant', content: data.answer, tipCount: data.tipCount ?? 0 }])
     } catch {
       setMessages((prev) => [
         ...prev,
@@ -192,37 +193,48 @@ export default function ScoutPage({
                   <Bot className="w-3.5 h-3.5 text-sand" />
                 </div>
               )}
-              <div
-                className={cn(
-                  'rounded-xl px-4 py-2.5 text-sm max-w-[80%] leading-relaxed',
-                  msg.role === 'assistant'
-                    ? 'bg-white border border-border text-foreground'
-                    : 'bg-navy text-cream whitespace-pre-wrap'
-                )}
-              >
-                {msg.role === 'assistant' ? (
-                  <ReactMarkdown
-                    components={{
-                      a: ({ href, children }) => (
-                        <a
-                          href={href}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="text-navy underline underline-offset-2 hover:text-navy/70 transition-colors"
-                        >
-                          {children}
-                        </a>
-                      ),
-                      p: ({ children }) => <p className="mb-1.5 last:mb-0">{children}</p>,
-                      ul: ({ children }) => <ul className="list-disc pl-4 mb-1.5 space-y-0.5">{children}</ul>,
-                      ol: ({ children }) => <ol className="list-decimal pl-4 mb-1.5 space-y-0.5">{children}</ol>,
-                      strong: ({ children }) => <strong className="font-semibold">{children}</strong>,
-                    }}
-                  >
-                    {msg.content}
-                  </ReactMarkdown>
-                ) : (
-                  msg.content
+              <div className="flex flex-col gap-1 max-w-[80%]">
+                <div
+                  className={cn(
+                    'rounded-xl px-4 py-2.5 text-sm leading-relaxed',
+                    msg.role === 'assistant'
+                      ? 'bg-white border border-border text-foreground'
+                      : 'bg-navy text-cream whitespace-pre-wrap'
+                  )}
+                >
+                  {msg.role === 'assistant' ? (
+                    <ReactMarkdown
+                      components={{
+                        a: ({ href, children }) => (
+                          <a
+                            href={href}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-navy underline underline-offset-2 hover:text-navy/70 transition-colors"
+                          >
+                            {children}
+                          </a>
+                        ),
+                        p: ({ children }) => <p className="mb-1.5 last:mb-0">{children}</p>,
+                        ul: ({ children }) => <ul className="list-disc pl-4 mb-1.5 space-y-0.5">{children}</ul>,
+                        ol: ({ children }) => <ol className="list-decimal pl-4 mb-1.5 space-y-0.5">{children}</ol>,
+                        strong: ({ children }) => <strong className="font-semibold">{children}</strong>,
+                      }}
+                    >
+                      {msg.content}
+                    </ReactMarkdown>
+                  ) : (
+                    msg.content
+                  )}
+                </div>
+                {msg.role === 'assistant' && (
+                  <p className="text-[10px] text-muted-foreground px-1">
+                    Based on:{' '}
+                    {(msg.tipCount ?? 0) > 0
+                      ? <><span className="font-medium text-navy">{msg.tipCount} parent {msg.tipCount === 1 ? 'tip' : 'tips'}</span> + verified venue data</>
+                      : 'verified venue data'
+                    }
+                  </p>
                 )}
               </div>
               {msg.role === 'user' && (

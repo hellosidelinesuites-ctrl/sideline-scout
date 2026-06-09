@@ -2,6 +2,7 @@ import { createClient } from '@/lib/supabase/server'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
+import TipsPanel from '@/components/admin/tips-panel'
 
 export default async function AdminPage() {
   const supabase = await createClient()
@@ -120,25 +121,7 @@ export default async function AdminPage() {
                 <CardTitle className="font-heading text-lg">Pending Parent Tips</CardTitle>
               </CardHeader>
               <CardContent>
-                <div className="divide-y divide-border">
-                  {pendingTips?.map((tip) => (
-                    <div key={tip.id} className="py-3">
-                      <div className="flex items-center gap-2 mb-1">
-                        {tip.category && <Badge variant="secondary" className="text-xs">{tip.category}</Badge>}
-                        {tip.submitter_name && (
-                          <span className="text-xs text-muted-foreground">by {tip.submitter_name}</span>
-                        )}
-                      </div>
-                      <p className="text-sm text-navy">{tip.tip}</p>
-                      <p className="text-xs text-muted-foreground mt-1">
-                        {new Date(tip.created_at).toLocaleString()}
-                      </p>
-                    </div>
-                  ))}
-                  {!pendingTips?.length && (
-                    <p className="py-6 text-center text-muted-foreground text-sm">No pending tips.</p>
-                  )}
-                </div>
+                <TipsPanel initialTips={pendingTips ?? []} />
               </CardContent>
             </Card>
           </TabsContent>

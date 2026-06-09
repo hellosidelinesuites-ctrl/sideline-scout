@@ -1,6 +1,31 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { createClient } from '@/lib/supabase/server'
 
+// GET /api/feedback?slug=... — returns approved tip count for a tournament
+export async function GET(req: NextRequest) {
+  const slug = req.nextUrl.searchParams.get('slug')
+  if (!slug) return NextResponse.json({ count: 0 })
+
+  const supabase = await createClient()
+
+  const { data: tournament } = await supabase
+    .from('tournaments')
+    .select('id')
+    .or(`slug.ilike.%${slug}%,name.ilike.%${slug}%`)
+    .limit(1)
+    .single()
+
+  if (!tournament) return NextResponse.json({ count: 0 })
+
+  const { count } = await supabase
+    .from('parent_tips')
+    .select('*', { count: 'exact', head: true })
+    .eq('tournament_id', tournament.id)
+    .eq('status', 'approved')
+
+  return NextResponse.json({ count: count ?? 0 })
+}
+
 export async function POST(req: NextRequest) {
   const { tournament_slug, tip, category, submitter_name } = await req.json()
 
