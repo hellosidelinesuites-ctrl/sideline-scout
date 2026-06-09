@@ -18,6 +18,7 @@ const PACKAGES = [
     description: 'Everything a family needs for a comfortable tournament day. Delivered to the venue. Add Field Setup to have it ready at your spot.',
     highlight: false,
     Icon: Tent,
+    headerImage: '/images/sideline-suites-family.png',
   },
   {
     id: 'basecamp',
@@ -48,6 +49,7 @@ const PACKAGES = [
     description: 'Everything in Team Basecamp plus premium extras. Your sideline, sorted before you arrive. Includes priority field setup — we handle everything.',
     highlight: false,
     Icon: Star,
+    headerImage: '/images/sideline-suites-premium.png',
   },
 ]
 
