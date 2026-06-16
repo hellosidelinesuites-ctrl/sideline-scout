@@ -36,7 +36,7 @@ const PACKAGES = [
     badge: 'Family Pick',
     bestFor: 'Families with 1–2 players',
     includes: ['2 folding chairs', 'Shade umbrella', 'Cooler with ice'],
-    description: 'Everything a family needs for a comfortable tournament day. Delivered to the venue. Add Field Setup to have it ready at your spot.',
+    description: 'Everything a family needs for a comfortable tournament day. Delivered to venue parking. Add Field Setup (+$40) to have it ready at your exact spot on the field.',
     highlight: false,
     Icon: Tent,
     headerImage: '/images/sideline-suites-family.png',
@@ -48,7 +48,7 @@ const PACKAGES = [
     badge: 'Most Popular',
     bestFor: 'Teams of 10–15 players',
     includes: ['10 folding chairs', '10×10 pop-up canopy', '2 large coolers', 'Folding table'],
-    description: 'A full sideline command center for your team. Delivered to the venue. Add Field Setup and your team arrives to a ready sideline.',
+    description: 'A full sideline command center for your team. Delivered to venue parking. Add Field Setup (+$40) and your team arrives to a ready sideline.',
     highlight: true,
     Icon: Users,
     headerImage: '/images/sideline-suites-3.png',
@@ -65,9 +65,9 @@ const PACKAGES = [
       '2 large coolers',
       'Folding table',
       'Snacks & drinks',
-      'Priority setup at your field',
+      'Priority setup at your field (Field Setup included)',
     ],
-    description: 'Everything in Team Basecamp plus premium extras. Your sideline, sorted before you arrive. Includes priority field setup — we handle everything.',
+    description: 'Everything in Team Basecamp plus premium extras. Delivered to venue parking with priority Field Setup included — your sideline is ready before you arrive.',
     highlight: false,
     Icon: Star,
     headerImage: '/images/sideline-suites-premium.png',
@@ -126,10 +126,12 @@ export default async function GearPage({ params }: { params: Promise<{ slug: str
       </div>
 
       {/* ── Delivery banner ── */}
-      <div className="flex items-center justify-center gap-2 bg-navy/5 border border-navy/10 rounded-lg px-4 py-2.5 mb-6">
-        <Truck className="w-4 h-4 text-navy shrink-0" />
+      <div className="flex items-start justify-center gap-2 bg-navy/5 border border-navy/10 rounded-lg px-4 py-3 mb-6">
+        <Truck className="w-4 h-4 text-navy shrink-0 mt-0.5" />
         <p className="text-sm font-medium text-navy">
-          All packages include delivery to the venue and end-of-day pickup.
+          All packages include delivery to venue parking and end-of-day pickup.{' '}
+          <span className="font-semibold">Add Field Setup (+$40)</span>
+          <span className="font-normal text-[#555]"> to have gear carried to your field and assembled.</span>
         </p>
       </div>
 
@@ -214,12 +216,12 @@ export default async function GearPage({ params }: { params: Promise<{ slug: str
       <div className="mb-10">
         <p className="text-xs font-semibold text-[#555] uppercase tracking-widest mb-3">Add-ons available at checkout</p>
         <div className="flex flex-col gap-2">
-          <div className="flex items-start gap-3 px-4 py-3 rounded-xl border border-sand/50 bg-sand/10 text-sm text-navy">
-            <Zap className="w-3.5 h-3.5 text-navy shrink-0 mt-0.5" />
+          <div className="flex items-start gap-3 px-4 py-3.5 rounded-xl border-2 border-navy bg-navy/5 text-sm text-navy">
+            <Zap className="w-4 h-4 text-navy shrink-0 mt-0.5" />
             <div>
-              <span className="font-medium">Field Setup</span>
-              <span className="text-[#555] font-normal"> +$40</span>
-              <span className="text-[#555]"> — We carry gear to your field and set up before you arrive.</span>
+              <span className="font-bold">Field Setup</span>
+              <span className="font-semibold text-navy"> +$40</span>
+              <span className="text-[#555]"> — We carry gear to your field and set up before you arrive. Most customers add this.</span>
             </div>
           </div>
           <div className="flex items-start gap-3 px-4 py-3 rounded-xl border border-sand/50 bg-sand/10 text-sm text-navy">

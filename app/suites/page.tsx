@@ -15,7 +15,7 @@ const PACKAGES = [
     badge: 'Family Pick',
     bestFor: 'Families with 1–2 players',
     includes: ['2 folding chairs', 'Shade umbrella', 'Cooler with ice'],
-    description: 'Everything a family needs for a comfortable tournament day. Delivered to the venue. Add Field Setup to have it ready at your spot.',
+    description: 'Everything a family needs for a comfortable tournament day. Delivered to venue parking. Add Field Setup (+$40) to have it ready at your exact spot on the field.',
     highlight: false,
     Icon: Tent,
     headerImage: '/images/sideline-suites-family.png',
@@ -27,7 +27,7 @@ const PACKAGES = [
     badge: 'Most Popular',
     bestFor: 'Teams of 10–15 players',
     includes: ['10 folding chairs', '10×10 pop-up canopy', '2 large coolers', 'Folding table'],
-    description: 'A full sideline command center for your team. Delivered to the venue. Add Field Setup and your team arrives to a ready sideline.',
+    description: 'A full sideline command center for your team. Delivered to venue parking. Add Field Setup (+$40) and your team arrives to a ready sideline.',
     highlight: true,
     Icon: Users,
     headerImage: '/images/sideline-suites-3.png',
@@ -44,9 +44,9 @@ const PACKAGES = [
       '2 large coolers',
       'Folding table',
       'Snacks & drinks',
-      'Priority setup at your field',
+      'Priority setup at your field (Field Setup included)',
     ],
-    description: 'Everything in Team Basecamp plus premium extras. Your sideline, sorted before you arrive. Includes priority field setup — we handle everything.',
+    description: 'Everything in Team Basecamp plus premium extras. Delivered to venue parking with priority Field Setup included — your sideline is ready before you arrive.',
     highlight: false,
     Icon: Star,
     headerImage: '/images/sideline-suites-premium.png',
@@ -60,7 +60,7 @@ const HOW_IT_WORKS = [
 ]
 
 const WHATS_INCLUDED = [
-  { Icon: Truck, title: 'Delivery to your field', body: 'We bring everything to your assigned field on tournament morning.' },
+  { Icon: Truck, title: 'Delivery to venue parking', body: 'We bring everything to venue parking. Add Field Setup (+$40) to have gear carried to your exact field and fully assembled.' },
   { Icon: Zap, title: 'Field-side setup', body: 'Canopy staked, chairs arranged, coolers stocked — ready before gates open.' },
   { Icon: ArrowRight, title: 'End-of-day pickup', body: 'We pack up and clear out after the final whistle. Nothing left for you to haul.' },
   { Icon: Check, title: 'Text confirmation', body: "You'll get a text when setup is complete and another when we've packed up." },
@@ -121,7 +121,15 @@ export default function SuitesPage() {
       <section className="px-6 py-16">
         <div className="max-w-5xl mx-auto">
           <h2 className="font-heading text-3xl font-bold text-navy text-center mb-2">Choose your package</h2>
-          <p className="text-[#555] text-center mb-10">No charge until we confirm availability.</p>
+          <p className="text-[#555] text-center mb-6">No charge until we confirm availability.</p>
+          <div className="flex items-start justify-center gap-2 bg-navy/5 border border-navy/10 rounded-lg px-4 py-3 mb-8">
+            <Truck className="w-4 h-4 text-navy shrink-0 mt-0.5" />
+            <p className="text-sm font-medium text-navy">
+              All packages include delivery to venue parking and end-of-day pickup.{' '}
+              <span className="font-semibold">Add Field Setup (+$40)</span>
+              <span className="font-normal text-[#555]"> to have gear carried to your field and assembled.</span>
+            </p>
+          </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 items-start">
             {PACKAGES.map((pkg) => (
               <Card
@@ -287,12 +295,12 @@ export default function SuitesPage() {
         <div className="max-w-5xl mx-auto">
           <p className="text-xs font-semibold text-[#555] uppercase tracking-widest mb-4 text-center">Optional add-ons</p>
           <div className="max-w-xl mx-auto flex flex-col gap-2">
-            <div className="flex items-start gap-3 px-4 py-3 rounded-xl border border-sand/50 bg-white text-sm text-navy">
-              <Zap className="w-3.5 h-3.5 text-navy shrink-0 mt-0.5" />
+            <div className="flex items-start gap-3 px-4 py-3.5 rounded-xl border-2 border-navy bg-navy/5 text-sm text-navy">
+              <Zap className="w-4 h-4 text-navy shrink-0 mt-0.5" />
               <div>
-                <span className="font-medium">Field Setup</span>
-                <span className="text-[#555] font-normal"> +$40</span>
-                <span className="text-[#555]"> — We carry gear to your field and set up before you arrive.</span>
+                <span className="font-bold">Field Setup</span>
+                <span className="font-semibold text-navy"> +$40</span>
+                <span className="text-[#555]"> — We carry gear to your field and set up before you arrive. Most customers add this.</span>
               </div>
             </div>
             <div className="flex items-start gap-3 px-4 py-3 rounded-xl border border-sand/50 bg-white text-sm text-navy">
