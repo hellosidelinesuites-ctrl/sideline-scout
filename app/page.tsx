@@ -93,7 +93,7 @@ export default function HomePage() {
             Tournament weekend.<br className="hidden sm:block" /> Locked in.
           </h1>
           <p className="text-steel text-lg md:text-xl max-w-xl mx-auto mb-8 leading-relaxed">
-            Sideline Suites delivers canopies, chairs, coolers, and team tables directly to your field.
+            Sideline Suites delivers canopies, chairs, and team tables directly to your field.
             Powered by Sideline Scout for weather, parking, hotels, and local tournament intel.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
@@ -136,7 +136,7 @@ export default function HomePage() {
               </h2>
               <p className="text-[#a0b4c8] text-base leading-relaxed mb-6">
                 The sideline gear rental marketplace built for tournament families. Reserve a canopy,
-                chairs, and cooler — delivered to venue parking, packed up when you leave.
+                chairs, and shade — delivered to venue parking, packed up when you leave.
               </p>
               <ul className="space-y-3 mb-8">
                 {[
@@ -259,7 +259,7 @@ export default function HomePage() {
           <p className="text-[#D6C6A5] text-sm font-medium mb-3">by Sideline Suites</p>
           <p className="text-cream/80 text-base leading-snug mb-6 max-w-lg mx-auto">
             No hotel. No full package. Just show up and find your gear waiting at the field.<br />
-            <span className="font-semibold text-cream">Family Sideline Kit — $99/day.</span> Tent, chairs, cooler. Delivered to venue parking. Add Field Setup (+$40) for field-side assembly.
+            <span className="font-semibold text-cream">Family Sideline Kit — $99/day.</span> Tent and chairs. Delivered to venue parking. Add Field Setup (+$40) for field-side assembly.
           </p>
           <Link
             href="/t/west-coast-showdown-2026/gear"

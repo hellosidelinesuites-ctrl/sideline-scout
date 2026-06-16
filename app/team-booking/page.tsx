@@ -17,11 +17,10 @@ const OFFERS = [
     name: 'Team Basecamp',
     price: '$249/day',
     tagline: 'Most popular',
-    description: 'Canopy, chairs, coolers, and a folding table — delivered to venue parking before the opening whistle.',
+    description: 'Canopy, chairs, and a folding table — delivered to venue parking before the opening whistle.',
     includes: [
       '10×10 pop-up canopy',
       '10 folding chairs',
-      '2 large coolers',
       'Folding table',
       'Pickup after the tournament',
     ],
@@ -34,10 +33,9 @@ const OFFERS = [
     name: 'Premium Team Suite',
     price: '$499/day',
     tagline: 'White glove',
-    description: 'Everything in Team Basecamp plus snacks, drinks, and priority field setup — your sideline is ready when you arrive.',
+    description: 'Everything in Team Basecamp plus priority field setup — your sideline is ready when you arrive.',
     includes: [
       'Everything in Team Basecamp',
-      'Snacks & drinks for players',
       'Priority setup at your field',
       'End-of-day full breakdown',
     ],
@@ -122,7 +120,7 @@ function TeamBookingContent() {
             Team managers, stop hauling<br className="hidden sm:block" /> the whole sideline.
           </h1>
           <p className="text-steel text-lg max-w-xl mx-auto">
-            One request. We handle chairs, shade, coolers, tables, and setup for your whole team.
+            One request. We handle chairs, shade, tables, and setup for your whole team.
           </p>
         </div>
       </section>

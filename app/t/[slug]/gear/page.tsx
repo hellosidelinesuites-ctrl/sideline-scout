@@ -35,7 +35,7 @@ const PACKAGES = [
     price: 99,
     badge: 'Family Pick',
     bestFor: 'Families with 1–2 players',
-    includes: ['2 folding chairs', 'Shade umbrella', 'Cooler with ice'],
+    includes: ['2 folding chairs', 'Shade umbrella'],
     description: 'Everything a family needs for a comfortable tournament day. Delivered to venue parking. Add Field Setup (+$40) to have it ready at your exact spot on the field.',
     highlight: false,
     Icon: Tent,
@@ -47,7 +47,7 @@ const PACKAGES = [
     price: 249,
     badge: 'Most Popular',
     bestFor: 'Teams of 10–15 players',
-    includes: ['10 folding chairs', '10×10 pop-up canopy', '2 large coolers', 'Folding table'],
+    includes: ['10 folding chairs', '10×10 pop-up canopy', 'Folding table'],
     description: 'A full sideline command center for your team. Delivered to venue parking. Add Field Setup (+$40) and your team arrives to a ready sideline.',
     highlight: true,
     Icon: Users,
@@ -62,9 +62,7 @@ const PACKAGES = [
     includes: [
       '10 folding chairs',
       '10×10 pop-up canopy',
-      '2 large coolers',
       'Folding table',
-      'Snacks & drinks',
       'Priority setup at your field (Field Setup included)',
     ],
     description: 'Everything in Team Basecamp plus premium extras. Delivered to venue parking with priority Field Setup included — your sideline is ready before you arrive.',
@@ -216,6 +214,20 @@ export default async function GearPage({ params }: { params: Promise<{ slug: str
       <div className="mb-10">
         <p className="text-xs font-semibold text-[#555] uppercase tracking-widest mb-3">Add-ons available at checkout</p>
         <div className="flex flex-col gap-2">
+          <div className="flex items-start gap-3 px-4 py-3 rounded-xl border border-sand/50 bg-sand/10 text-sm text-navy">
+            <Package className="w-3.5 h-3.5 text-navy shrink-0 mt-0.5" />
+            <div>
+              <span className="font-medium">Cooler with ice</span>
+              <span className="text-[#555] font-normal"> +$25</span>
+            </div>
+          </div>
+          <div className="flex items-start gap-3 px-4 py-3 rounded-xl border border-sand/50 bg-sand/10 text-sm text-navy">
+            <Utensils className="w-3.5 h-3.5 text-navy shrink-0 mt-0.5" />
+            <div>
+              <span className="font-medium">Snack &amp; drink pack</span>
+              <span className="text-[#555] font-normal"> +$35</span>
+            </div>
+          </div>
           <div className="flex items-start gap-3 px-4 py-3.5 rounded-xl border-2 border-navy bg-navy/5 text-sm text-navy">
             <Zap className="w-4 h-4 text-navy shrink-0 mt-0.5" />
             <div>
@@ -230,6 +242,13 @@ export default async function GearPage({ params }: { params: Promise<{ slug: str
               <span className="font-medium">Hotel Delivery</span>
               <span className="text-[#555] font-normal"> +$25</span>
               <span className="text-[#555]"> — Gear delivered to your hotel the night before.</span>
+            </div>
+          </div>
+          <div className="flex items-start gap-3 px-4 py-3 rounded-xl border border-sand/50 bg-sand/10 text-sm text-navy">
+            <Zap className="w-3.5 h-3.5 text-navy shrink-0 mt-0.5" />
+            <div>
+              <span className="font-medium">Phone charging station</span>
+              <span className="text-[#555] font-normal"> +$20</span>
             </div>
           </div>
           <div className="flex items-start gap-3 px-4 py-3 rounded-xl border border-sand/50 bg-sand/10 text-sm text-navy">
