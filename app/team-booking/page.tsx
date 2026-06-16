@@ -15,38 +15,39 @@ const OFFERS = [
     id: 'basecamp',
     icon: ShoppingBag,
     name: 'Team Basecamp',
-    price: '$249',
+    price: '$249/day',
     tagline: 'Most popular',
-    description: 'Canopy, chairs, coolers, and a folding table — delivered and set up at your field before the opening whistle.',
+    description: 'Canopy, chairs, coolers, and a folding table — delivered to venue parking before the opening whistle.',
     includes: [
       '10×10 pop-up canopy',
       '10 folding chairs',
       '2 large coolers',
       'Folding table',
-      'Setup before gates open',
       'Pickup after the tournament',
     ],
+    note: 'Add Field Setup (+$40) to have gear carried to your field.',
     highlight: true,
   },
   {
     id: 'premium',
     icon: Star,
     name: 'Premium Team Suite',
-    price: '$499',
+    price: '$499/day',
     tagline: 'White glove',
-    description: 'Everything in Team Basecamp plus snacks, drinks, and priority setup at your assigned field.',
+    description: 'Everything in Team Basecamp plus snacks, drinks, and priority field setup — your sideline is ready when you arrive.',
     includes: [
       'Everything in Team Basecamp',
       'Snacks & drinks for players',
       'Priority setup at your field',
       'End-of-day full breakdown',
     ],
+    note: null,
   },
   {
     id: 'concierge',
     icon: Hotel,
     name: 'Full Weekend Concierge',
-    price: 'Contact us',
+    price: 'From $599/day',
     tagline: 'All-in',
     description: 'Sideline Suites + hotel block coordination + a Scout briefing sent to every family on your roster.',
     includes: [
@@ -55,6 +56,7 @@ const OFFERS = [
       'Scout briefing for all families',
       'Priority support all weekend',
     ],
+    note: null,
   },
 ]
 
@@ -129,10 +131,13 @@ function TeamBookingContent() {
 
         {/* Offer cards */}
         <div>
-          <p className="text-sm font-semibold text-[#555] uppercase tracking-widest text-center mb-6">
+          <p className="text-sm font-semibold text-[#555] uppercase tracking-widest text-center mb-4">
             Choose your package
           </p>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <div className="flex items-center justify-center gap-2 bg-navy/5 border border-navy/10 rounded-lg px-4 py-2.5 mb-5 text-sm text-navy">
+            All packages include delivery to venue parking. <span className="font-semibold ml-1">Field Setup (+$40)</span><span className="text-[#555]"> available for carried-to-field assembly.</span>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 items-stretch">
             {OFFERS.map((offer) => {
               const Icon = offer.icon
               const active = selectedPackage === offer.id
@@ -141,7 +146,7 @@ function TeamBookingContent() {
                   key={offer.id}
                   type="button"
                   onClick={() => setSelectedPackage(offer.id)}
-                  className={`text-left rounded-2xl border-2 p-5 transition-all ${
+                  className={`text-left rounded-2xl border-2 p-5 transition-all h-full flex flex-col ${
                     active
                       ? 'border-navy bg-white shadow-md'
                       : 'border-border bg-white hover:border-navy/40 hover:shadow-sm'
@@ -160,7 +165,7 @@ function TeamBookingContent() {
                   <p className="font-heading font-bold text-navy text-lg leading-tight mb-0.5">{offer.name}</p>
                   <p className="font-heading text-2xl font-bold text-navy mb-1">{offer.price}</p>
                   <p className="text-xs text-[#555] mb-3">{offer.description}</p>
-                  <ul className="space-y-1.5">
+                  <ul className="space-y-1.5 flex-1">
                     {offer.includes.map((item) => (
                       <li key={item} className="flex items-start gap-1.5 text-xs text-[#555]">
                         <CheckCircle2 className="w-3.5 h-3.5 text-navy shrink-0 mt-0.5" />
@@ -168,6 +173,9 @@ function TeamBookingContent() {
                       </li>
                     ))}
                   </ul>
+                  {offer.note && (
+                    <p className="text-xs text-[#555] italic mt-3 pt-3 border-t border-border/60">{offer.note}</p>
+                  )}
                   {active && (
                     <div className="mt-3 pt-3 border-t border-border">
                       <p className="text-xs font-semibold text-navy">✓ Selected</p>
