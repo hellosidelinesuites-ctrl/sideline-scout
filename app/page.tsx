@@ -136,14 +136,13 @@ export default function HomePage() {
               </h2>
               <p className="text-[#a0b4c8] text-base leading-relaxed mb-6">
                 The sideline gear rental marketplace built for tournament families. Reserve a canopy,
-                chairs, and cooler — delivered to your field, set up before your first game, and
-                packed up when you leave.
+                chairs, and cooler — delivered to venue parking, packed up when you leave.
               </p>
               <ul className="space-y-3 mb-8">
                 {[
-                  'Gear waiting at your field when you arrive',
-                  'Professional setup and teardown included',
-                  'Family kits from $85 · Team packages from $350',
+                  'Gear delivered to venue parking before you arrive',
+                  'Add Field Setup (+$40) for field-side assembly and teardown',
+                  'Family kits from $99 · Team packages from $249',
                 ].map((item) => (
                   <li key={item} className="flex items-center gap-3 text-sm text-[#c0d0e0]">
                     <Check className="w-4 h-4 text-[#D6C6A5] shrink-0" />
@@ -239,7 +238,7 @@ export default function HomePage() {
                   </div>
                   <div>
                     <p className="font-semibold text-navy text-sm">Sideline Suites</p>
-                    <p className="text-xs text-[#555]">Tent setups from $85</p>
+                    <p className="text-xs text-[#555]">Tent setups from $99/day</p>
                   </div>
                 </Link>
               </div>
@@ -260,7 +259,7 @@ export default function HomePage() {
           <p className="text-[#D6C6A5] text-sm font-medium mb-3">by Sideline Suites</p>
           <p className="text-cream/80 text-base leading-snug mb-6 max-w-lg mx-auto">
             No hotel. No full package. Just show up and find your gear waiting at the field.<br />
-            <span className="font-semibold text-cream">Family Sideline Kit — $85/weekend.</span> Tent, chairs, cooler. Delivered and set up.
+            <span className="font-semibold text-cream">Family Sideline Kit — $99/day.</span> Tent, chairs, cooler. Delivered to venue parking. Add Field Setup (+$40) for field-side assembly.
           </p>
           <Link
             href="/t/west-coast-showdown-2026/gear"

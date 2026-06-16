@@ -17,7 +17,7 @@ const GEAR_OPTIONS = [
 ]
 
 const PAYOUT_RATE = 0.82
-const AVG_RATE_PER_ITEM = 50
+const AVG_RATE_PER_ITEM = 99
 
 // ── Earnings Calculator ─────────────────────────────────────────────
 

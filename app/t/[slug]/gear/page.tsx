@@ -32,7 +32,7 @@ const PACKAGES = [
   {
     id: 'family',
     name: 'Family Sideline Kit',
-    price: 85,
+    price: 99,
     badge: 'Family Pick',
     bestFor: 'Families with 1–2 players',
     includes: ['2 folding chairs', 'Shade umbrella', 'Cooler with ice'],
@@ -44,7 +44,7 @@ const PACKAGES = [
   {
     id: 'basecamp',
     name: 'Team Basecamp',
-    price: 195,
+    price: 249,
     badge: 'Most Popular',
     bestFor: 'Teams of 10–15 players',
     includes: ['10 folding chairs', '10×10 pop-up canopy', '2 large coolers', 'Folding table'],
@@ -56,7 +56,7 @@ const PACKAGES = [
   {
     id: 'premium',
     name: 'Premium Team Suite',
-    price: 395,
+    price: 499,
     badge: 'Premium',
     bestFor: 'Teams wanting a VIP experience',
     includes: [
@@ -98,7 +98,7 @@ export default async function GearPage({ params }: { params: Promise<{ slug: str
       <div className="mb-6">
         <h1 className="font-heading text-3xl font-bold text-navy">Sideline Suites</h1>
         <p className="text-[#555] mt-1">
-          Tournament sideline setups, delivered to your field. Canopies, chairs, coolers — ready before you arrive.
+          Tournament sideline setups for West Coast Showdown. Delivered to venue parking.
         </p>
       </div>
 
@@ -108,7 +108,7 @@ export default async function GearPage({ params }: { params: Promise<{ slug: str
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 text-center">
           {[
             { step: '1', label: 'Choose your package', detail: 'Pick the setup that fits your family or team' },
-            { step: '2', label: 'We set it up at your field', detail: 'Gear is ready before you arrive' },
+            { step: '2', label: 'Gear delivered to venue parking', detail: 'Add Field Setup (+$40) to have it ready at your exact field' },
             { step: '3', label: 'Enjoy the game', detail: 'We handle pickup when the tournament ends' },
           ].map((s, i) => (
             <div key={s.step} className="flex flex-col items-center gap-1.5 relative">
@@ -191,7 +191,7 @@ export default async function GearPage({ params }: { params: Promise<{ slug: str
                 <div className="mt-auto pt-2">
                   <p className="font-heading text-3xl font-bold text-navy mb-1">
                     ${pkg.price}
-                    <span className="text-sm font-normal text-[#555]">/weekend</span>
+                    <span className="text-sm font-normal text-[#555]">/day</span>
                   </p>
                   <Button
                     asChild

@@ -11,7 +11,7 @@ const PACKAGES = [
   {
     id: 'family',
     name: 'Family Sideline Kit',
-    price: 85,
+    price: 99,
     badge: 'Family Pick',
     bestFor: 'Families with 1–2 players',
     includes: ['2 folding chairs', 'Shade umbrella', 'Cooler with ice'],
@@ -23,7 +23,7 @@ const PACKAGES = [
   {
     id: 'basecamp',
     name: 'Team Basecamp',
-    price: 195,
+    price: 249,
     badge: 'Most Popular',
     bestFor: 'Teams of 10–15 players',
     includes: ['10 folding chairs', '10×10 pop-up canopy', '2 large coolers', 'Folding table'],
@@ -35,7 +35,7 @@ const PACKAGES = [
   {
     id: 'premium',
     name: 'Premium Team Suite',
-    price: 395,
+    price: 499,
     badge: 'Premium',
     bestFor: 'Teams wanting a VIP experience',
     includes: [
@@ -55,7 +55,7 @@ const PACKAGES = [
 
 const HOW_IT_WORKS = [
   { step: '1', label: 'Choose your package', detail: 'Pick the setup that fits your family or team. No charge until we confirm.' },
-  { step: '2', label: 'We set it up at your field', detail: 'Gear is staged and ready before you arrive on game day.' },
+  { step: '2', label: 'Gear delivered to venue parking', detail: 'Add Field Setup (+$40) to have it ready at your exact field before gates open.' },
   { step: '3', label: 'Enjoy the game', detail: 'We handle pickup when the tournament ends. Just walk away.' },
 ]
 
@@ -175,7 +175,7 @@ export default function SuitesPage() {
                   <div className="mt-auto pt-2">
                     <p className="font-heading text-3xl font-bold text-navy mb-1">
                       ${pkg.price}
-                      <span className="text-sm font-normal text-[#555]">/weekend</span>
+                      <span className="text-sm font-normal text-[#555]">/day</span>
                     </p>
                     <Button
                       asChild

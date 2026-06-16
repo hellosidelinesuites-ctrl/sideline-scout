@@ -41,7 +41,7 @@ export default async function TournamentLayout({ children, params }: Props) {
   const navLinks = [
     { href: `/t/${slug}/scout`, label: 'Scout', icon: MessageSquare },
     { href: `/t/${slug}/hotels`, label: 'Hotels', icon: Hotel },
-    { href: `/t/${slug}/gear`, label: 'Gear', icon: ShoppingBag },
+    { href: `/t/${slug}/gear`, label: 'Sideline Suites', icon: ShoppingBag },
   ]
 
   return (
