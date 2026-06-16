@@ -25,16 +25,8 @@ const QUICK_QUESTIONS = [
 
 const SAMPLE_QA = [
   {
-    q: 'Where should we park for early games?',
-    a: 'Arrive 30–45 minutes before warm-ups. Drop gear and family at the field entrance first, then go park — saves multiple trips. Main lots fill fast on peak mornings so early arrival helps. Wagons are allowed on all paved paths throughout the complex.',
-  },
-  {
-    q: 'Where should our team eat dinner?',
-    a: 'Top pick for teams: **Lazy Dog Restaurant & Bar** (1.2 mi) — spacious booths, kids menu, full bar. OpenTable reservations strongly recommended on weekends. **BJ\'s Brewhouse** (2.1 mi) is another solid group option with deep dish pizza and a huge menu. Both can handle large parties.',
-  },
-  {
-    q: "What's the weather forecast for tournament weekend?",
-    a: 'Forecast for July 18–19: highs of 88–91°F, sunny with less than 5% chance of rain. Bay breezes typically pick up in the afternoon. Bring sunscreen (reapply every 90 min on turf), cooling towels, and at least 1 gallon of water per person per day.',
+    q: 'What should I bring for tent setup?',
+    a: 'Stakes and a mallet (turf fields require them), sandbag weights as backup, a footprint or ground tarp, and zip ties for canopy walls if wind picks up. If you booked a **Sideline Suites** package, your canopy and chairs are delivered to venue parking — add Field Setup (+$40) and we carry everything to your field and assemble it before you arrive.',
   },
 ]
 
