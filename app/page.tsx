@@ -93,8 +93,9 @@ export default function HomePage() {
             Tournament weekend.<br className="hidden sm:block" /> Locked in.
           </h1>
           <p className="text-steel text-lg md:text-xl max-w-xl mx-auto mb-8 leading-relaxed">
-            Sideline Suites delivers canopies, chairs, and team tables directly to your field.
-            Powered by Sideline Scout for weather, parking, hotels, and local tournament intel.
+            Premium tournament setups, waiting for your team when you arrive. Shade, chairs, coolers,
+            and tables — delivered to the field, packed up when it ends. Powered by Sideline Scout
+            for weather, parking, and local intel.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
             <Link
@@ -121,6 +122,26 @@ export default function HomePage() {
           <span className="font-semibold">West Coast Showdown 2026</span>
           {' · '}Sunnyvale, CA{' · '}July 18–19
         </p>
+      </section>
+
+      {/* ── Team Manager CTA ── */}
+      <section className="bg-[#0E1A2B] text-cream px-6 py-14">
+        <div className="max-w-4xl mx-auto text-center">
+          <p className="text-[#D6C6A5] font-semibold text-sm uppercase tracking-widest mb-3">Built for team parents</p>
+          <h2 className="font-heading text-3xl md:text-4xl font-bold mb-4 leading-tight">
+            One manager reserves.<br className="hidden sm:block" /> Every family shows up to a ready sideline.
+          </h2>
+          <p className="text-[#a0b4c8] text-base mb-6 max-w-xl mx-auto leading-relaxed">
+            Team Basecamp at <span className="text-cream font-semibold">$249/day</span> split across 15 families
+            {' '}= <span className="text-[#D6C6A5] font-bold text-lg">$17 per family.</span>
+          </p>
+          <Link
+            href="/team-booking"
+            className="inline-flex items-center gap-2 font-semibold rounded-full px-8 py-4 bg-[#D6C6A5] text-[#0E1A2B] hover:bg-[#c4b48f] transition-colors text-base"
+          >
+            Book for My Team →
+          </Link>
+        </div>
       </section>
 
       {/* ── Sideline Suites intro ── */}

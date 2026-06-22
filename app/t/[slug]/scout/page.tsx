@@ -220,13 +220,26 @@ export default function ScoutPage({
                   )}
                 </div>
                 {msg.role === 'assistant' && (
-                  <p className="text-[10px] text-muted-foreground px-1">
-                    Based on:{' '}
-                    {(msg.tipCount ?? 0) > 0
-                      ? <><span className="font-medium text-navy">{msg.tipCount} parent {msg.tipCount === 1 ? 'tip' : 'tips'}</span> + verified venue data</>
-                      : 'verified venue data'
-                    }
-                  </p>
+                  <>
+                    <p className="text-[10px] text-muted-foreground px-1">
+                      Based on:{' '}
+                      {(msg.tipCount ?? 0) > 0
+                        ? <><span className="font-medium text-navy">{msg.tipCount} parent {msg.tipCount === 1 ? 'tip' : 'tips'}</span> + verified venue data</>
+                        : 'verified venue data'
+                      }
+                    </p>
+                    <div className="mt-2 bg-[#D6C6A5]/20 border border-[#D6C6A5]/50 rounded-xl px-4 py-3 flex items-center justify-between gap-4">
+                      <p className="text-xs text-navy leading-snug">
+                        <span className="font-semibold">Want this handled for you?</span> Reserve a Sideline Suite for this tournament.
+                      </p>
+                      <a
+                        href={`/t/${slug}/gear`}
+                        className="shrink-0 text-xs font-semibold bg-navy text-cream rounded-full px-3 py-1.5 hover:bg-[#1a2d47] transition-colors whitespace-nowrap"
+                      >
+                        Reserve →
+                      </a>
+                    </div>
+                  </>
                 )}
               </div>
               {msg.role === 'user' && (
