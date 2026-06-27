@@ -1,3 +1,4 @@
+// cache-bust v2
 import { createClient } from '@/lib/supabase/server'
 import { notFound } from 'next/navigation'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
@@ -32,7 +33,7 @@ const PACKAGES = [
   {
     id: 'family',
     name: 'Family Sideline Kit',
-    price: 99,
+    price: 124,
     badge: 'Family Pick',
     bestFor: 'Families with 1–2 players',
     includes: ['2 folding chairs', 'Shade umbrella'],
@@ -44,7 +45,7 @@ const PACKAGES = [
   {
     id: 'basecamp',
     name: 'Team Basecamp',
-    price: 249,
+    price: 375,
     badge: 'Most Popular',
     bestFor: 'Teams of 10–15 players',
     includes: ['10 folding chairs', '10×10 pop-up canopy', 'Folding table'],
@@ -56,7 +57,7 @@ const PACKAGES = [
   {
     id: 'premium',
     name: 'Premium Team Suite',
-    price: 499,
+    price: 1075,
     badge: 'Premium',
     bestFor: 'Teams wanting a VIP experience',
     includes: [
@@ -212,15 +213,11 @@ export default async function GearPage({ params }: { params: Promise<{ slug: str
 
       {/* ── Add-on chips ── */}
       <div className="mb-10">
+        <div className="bg-sand/20 border border-sand/40 rounded-xl px-4 py-3 mb-4 text-sm text-navy leading-snug">
+          No official venue arrangement needed. We deliver to venue parking — you set up, or add <span className="font-semibold">Field Setup (+$40)</span> and we handle it.
+        </div>
         <p className="text-xs font-semibold text-[#555] uppercase tracking-widest mb-3">Add-ons available at checkout</p>
         <div className="flex flex-col gap-2">
-          <div className="flex items-start gap-3 px-4 py-3 rounded-xl border border-sand/50 bg-sand/10 text-sm text-navy">
-            <Package className="w-3.5 h-3.5 text-navy shrink-0 mt-0.5" />
-            <div>
-              <span className="font-medium">Cooler with ice</span>
-              <span className="text-[#555] font-normal"> +$25</span>
-            </div>
-          </div>
           <div className="flex items-start gap-3 px-4 py-3 rounded-xl border border-sand/50 bg-sand/10 text-sm text-navy">
             <Utensils className="w-3.5 h-3.5 text-navy shrink-0 mt-0.5" />
             <div>

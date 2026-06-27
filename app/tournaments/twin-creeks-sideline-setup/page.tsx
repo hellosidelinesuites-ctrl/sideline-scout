@@ -11,18 +11,18 @@ export const metadata: Metadata = {
 const PACKAGES = [
   {
     name: 'Family Sideline Kit',
-    price: '$99/day',
+    price: '$124/day',
     includes: ['2 folding chairs', 'Shade umbrella', 'Delivery to venue parking'],
   },
   {
     name: 'Team Basecamp',
-    price: '$249/day',
+    price: '$375/day',
     includes: ['10×10 pop-up canopy', '10 folding chairs', 'Folding table', 'Delivery to venue parking'],
     popular: true,
   },
   {
     name: 'Premium Team Suite',
-    price: '$499/day',
+    price: '$1,075/day',
     includes: ['Double canopy setup', '10+ folding chairs', 'Folding table', 'Priority field setup included', 'End-of-day full breakdown'],
   },
 ]

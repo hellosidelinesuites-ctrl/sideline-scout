@@ -132,8 +132,8 @@ export default function HomePage() {
             One manager reserves.<br className="hidden sm:block" /> Every family shows up to a ready sideline.
           </h2>
           <p className="text-[#a0b4c8] text-base mb-6 max-w-xl mx-auto leading-relaxed">
-            Team Basecamp at <span className="text-cream font-semibold">$249/day</span> split across 15 families
-            {' '}= <span className="text-[#D6C6A5] font-bold text-lg">$17 per family.</span>
+            Team Basecamp at <span className="text-cream font-semibold">$375/day</span> split across 15 families
+            {' '}= <span className="text-[#D6C6A5] font-bold text-lg">$25 per family.</span>
           </p>
           <Link
             href="/team-booking"
@@ -259,7 +259,7 @@ export default function HomePage() {
                   </div>
                   <div>
                     <p className="font-semibold text-navy text-sm">Sideline Suites</p>
-                    <p className="text-xs text-[#555]">Tent setups from $99/day</p>
+                    <p className="text-xs text-[#555]">Tent setups from $124/day</p>
                   </div>
                 </Link>
               </div>
@@ -280,7 +280,7 @@ export default function HomePage() {
           <p className="text-[#D6C6A5] text-sm font-medium mb-3">by Sideline Suites</p>
           <p className="text-cream/80 text-base leading-snug mb-6 max-w-lg mx-auto">
             No hotel. No full package. Just show up and find your gear waiting at the field.<br />
-            <span className="font-semibold text-cream">Family Sideline Kit — $99/day.</span> Tent and chairs. Delivered to venue parking. Add Field Setup (+$40) for field-side assembly.
+            <span className="font-semibold text-cream">Family Sideline Kit — $124/day.</span> Tent and chairs. Delivered to venue parking. Add Field Setup (+$40) for field-side assembly.
           </p>
           <Link
             href="/t/west-coast-showdown-2026/gear"

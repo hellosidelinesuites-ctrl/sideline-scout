@@ -1,3 +1,4 @@
+// cache-bust v2
 'use client'
 
 import { useState, useEffect, Suspense } from 'react'
@@ -15,7 +16,7 @@ const OFFERS = [
     id: 'basecamp',
     icon: ShoppingBag,
     name: 'Team Basecamp',
-    price: '$249/day',
+    price: '$375/day',
     tagline: 'Most popular',
     description: 'Canopy, chairs, and a folding table — delivered to venue parking before the opening whistle.',
     includes: [
@@ -31,7 +32,7 @@ const OFFERS = [
     id: 'premium',
     icon: Star,
     name: 'Premium Team Suite',
-    price: '$499/day',
+    price: '$1,075/day',
     tagline: 'White glove',
     description: 'Everything in Team Basecamp plus priority field setup — your sideline is ready when you arrive.',
     includes: [
@@ -45,7 +46,7 @@ const OFFERS = [
     id: 'concierge',
     icon: Hotel,
     name: 'Full Weekend Concierge',
-    price: 'From $599/day',
+    price: 'From $749/day',
     tagline: 'All-in',
     description: 'Sideline Suites + hotel block coordination + a Scout briefing sent to every family on your roster.',
     includes: [
