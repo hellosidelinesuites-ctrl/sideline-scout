@@ -16,7 +16,7 @@ const OFFERS = [
     id: 'basecamp',
     icon: ShoppingBag,
     name: 'Team Basecamp',
-    price: '$375/day',
+    price: '$349/day',
     tagline: 'Most popular',
     description: 'Canopy, chairs, and a folding table — delivered to venue parking before the opening whistle.',
     includes: [
@@ -32,7 +32,7 @@ const OFFERS = [
     id: 'premium',
     icon: Star,
     name: 'Premium Team Suite',
-    price: '$1,075/day',
+    price: '$899/day',
     tagline: 'White glove',
     description: 'Everything in Team Basecamp plus priority field setup — your sideline is ready when you arrive.',
     includes: [

@@ -33,7 +33,7 @@ const PACKAGES = [
   {
     id: 'family',
     name: 'Family Sideline Kit',
-    price: 124,
+    price: 149,
     badge: 'Family Pick',
     bestFor: 'Families with 1–2 players',
     includes: ['2 folding chairs', 'Shade umbrella'],
@@ -45,7 +45,7 @@ const PACKAGES = [
   {
     id: 'basecamp',
     name: 'Team Basecamp',
-    price: 375,
+    price: 349,
     badge: 'Most Popular',
     bestFor: 'Teams of 10–15 players',
     includes: ['10 folding chairs', '10×10 pop-up canopy', 'Folding table'],
@@ -57,7 +57,7 @@ const PACKAGES = [
   {
     id: 'premium',
     name: 'Premium Team Suite',
-    price: 1075,
+    price: 899,
     badge: 'Premium',
     bestFor: 'Teams wanting a VIP experience',
     includes: [
@@ -136,9 +136,8 @@ export default async function GearPage({ params }: { params: Promise<{ slug: str
 
       {/* ── Managed packages ── */}
       <div className="mb-6">
-        <div className="flex items-center gap-3 mb-4">
+        <div className="mb-4">
           <h2 className="font-heading text-xl font-bold text-navy">Sideline Suites Packages</h2>
-          <Badge className="bg-navy text-cream border-0 text-xs">Managed by us</Badge>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 items-start">
           {PACKAGES.map((pkg) => (

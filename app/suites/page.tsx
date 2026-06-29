@@ -11,7 +11,7 @@ const PACKAGES = [
   {
     id: 'family',
     name: 'Family Sideline Kit',
-    price: 124,
+    price: 149,
     badge: 'Family Pick',
     bestFor: 'Families with 1–2 players',
     includes: ['2 folding chairs', 'Shade umbrella'],
@@ -23,7 +23,7 @@ const PACKAGES = [
   {
     id: 'basecamp',
     name: 'Team Basecamp',
-    price: 375,
+    price: 349,
     badge: 'Most Popular',
     bestFor: 'Teams of 10–15 players',
     includes: ['10 folding chairs', '10×10 pop-up canopy', 'Folding table'],
@@ -35,7 +35,7 @@ const PACKAGES = [
   {
     id: 'premium',
     name: 'Premium Team Suite',
-    price: 1075,
+    price: 899,
     badge: 'Premium',
     bestFor: 'Teams wanting a VIP experience',
     includes: [

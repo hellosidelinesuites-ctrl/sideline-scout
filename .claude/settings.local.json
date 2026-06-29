@@ -13,7 +13,8 @@
       "Bash(cp \"/Users/erinmcdearman/Downloads/ChatGPT Image Jun 8, 2026 at 10_29_17 PM \\(4\\).png\" /Users/erinmcdearman/sideline-scout/public/images/sideline-suites-4.png)",
       "Bash(cp \"/Users/erinmcdearman/Downloads/ChatGPT Image Jun 8, 2026 at 10_52_43 PM \\(1\\).png\" /Users/erinmcdearman/sideline-scout/public/images/sideline-suites-family.png)",
       "Bash(cp \"/Users/erinmcdearman/Downloads/ChatGPT Image Jun 8, 2026 at 10_52_43 PM \\(2\\).png\" /Users/erinmcdearman/sideline-scout/public/images/sideline-suites-premium.png)",
-      "Bash(grep:*)"
+      "Bash(grep:*)",
+      "Bash(git push:*)"
     ]
   }
 }
